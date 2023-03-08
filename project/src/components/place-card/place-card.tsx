@@ -13,7 +13,7 @@ export default function PlaceCard(): JSX.Element {
             src='img/apartment-01.jpg'
             width='260'
             height='200'
-            alt='Place image'
+            alt='Place-card'
           />
         </Link>
       </div>

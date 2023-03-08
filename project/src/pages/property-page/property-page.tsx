@@ -46,42 +46,42 @@ export default function PropertyPage(): JSX.Element {
                 <img
                   className='property__image'
                   src='img/room.jpg'
-                  alt='Photo studio'
+                  alt='Studio'
                 />
               </div>
               <div className='property__image-wrapper'>
                 <img
                   className='property__image'
                   src='img/apartment-01.jpg'
-                  alt='Photo studio'
+                  alt='Studio'
                 />
               </div>
               <div className='property__image-wrapper'>
                 <img
                   className='property__image'
                   src='img/apartment-02.jpg'
-                  alt='Photo studio'
+                  alt='Studio'
                 />
               </div>
               <div className='property__image-wrapper'>
                 <img
                   className='property__image'
                   src='img/apartment-03.jpg'
-                  alt='Photo studio'
+                  alt='Studio'
                 />
               </div>
               <div className='property__image-wrapper'>
                 <img
                   className='property__image'
                   src='img/studio-01.jpg'
-                  alt='Photo studio'
+                  alt='Studio'
                 />
               </div>
               <div className='property__image-wrapper'>
                 <img
                   className='property__image'
                   src='img/apartment-01.jpg'
-                  alt='Photo studio'
+                  alt='Studio'
                 />
               </div>
             </div>
@@ -333,7 +333,7 @@ export default function PropertyPage(): JSX.Element {
                       src='img/room.jpg'
                       width='260'
                       height='200'
-                      alt='Place image'
+                      alt='Place-card'
                     />
                   </Link>
                 </div>
@@ -367,7 +367,7 @@ export default function PropertyPage(): JSX.Element {
                       src='img/apartment-02.jpg'
                       width='260'
                       height='200'
-                      alt='Place image'
+                      alt='Place-card'
                     />
                   </Link>
                 </div>
@@ -404,7 +404,7 @@ export default function PropertyPage(): JSX.Element {
                       src='img/apartment-03.jpg'
                       width='260'
                       height='200'
-                      alt='Place image'
+                      alt='Place-card'
                     />
                   </Link>
                 </div>
