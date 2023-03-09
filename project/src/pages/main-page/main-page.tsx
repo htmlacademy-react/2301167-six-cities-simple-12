@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import PlaceCard from '../../components/place-card/place-card';
+import MainPlaceCard from '../../components/main-place-card/main-place-card';
 
 type MainPageProps = {
   adsCount: number;
@@ -82,11 +82,11 @@ export default function MainPage({ adsCount }: MainPageProps): JSX.Element {
               </ul>
             </form>
             <div className='cities__places-list places__list tabs__content'>
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
+              <MainPlaceCard />
+              <MainPlaceCard />
+              <MainPlaceCard />
+              <MainPlaceCard />
+              <MainPlaceCard />
             </div>
           </section>
           <div className='cities__right-section'>

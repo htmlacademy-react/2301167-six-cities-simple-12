@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function PlaceCard(): JSX.Element {
+export default function MainPlaceCard(): JSX.Element {
   return (
     <article className='cities__card place-card'>
       <div className='place-card__mark'>
