@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
@@ -12,24 +13,26 @@ type AppProps = {
 
 function App({ adsCount }: AppProps): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<MainPage adsCount={adsCount} />}
-        />
-        <Route path={AppRoute.Login} element={<LoginPage />} />
-        <Route
-          path={AppRoute.Room}
-          element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <PropertyPage />
-            </PrivateRoute>
-          }
-        />
-        <Route path='*' element={<Page404 />} />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Main}
+            element={<MainPage adsCount={adsCount} />}
+          />
+          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route
+            path={AppRoute.Room}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <PropertyPage />
+              </PrivateRoute>
+            }
+          />
+          <Route path='*' element={<Page404 />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
