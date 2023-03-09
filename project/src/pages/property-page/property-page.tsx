@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
 
 export default function PropertyPage(): JSX.Element {
   return (
@@ -8,30 +7,6 @@ export default function PropertyPage(): JSX.Element {
       <Helmet>
         <title>6/Cities.Room</title>
       </Helmet>
-      <header className='header'>
-        <div className='container'>
-          <div className='header__wrapper'>
-            <Logo />
-            <nav className='header__nav'>
-              <ul className='header__nav-list'>
-                <li className='header__nav-item user'>
-                  <div className='header__nav-profile'>
-                    <div className='header__avatar-wrapper user__avatar-wrapper'></div>
-                    <span className='header__user-name user__name'>
-                      Oliver.conner@gmail.com
-                    </span>
-                  </div>
-                </li>
-                <li className='header__nav-item'>
-                  <Link className='header__nav-link' to='#'>
-                    <span className='header__signout'>Sign out</span>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
 
       <main className='page__main page__main--property'>
         <section className='property'>
