@@ -12,22 +12,22 @@ type AppProps = {
   adsCount: number;
 };
 
-function App({ adsCount }: AppProps): JSX.Element {
+export default function App({ adsCount }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<Layout />}>
             <Route index element={<MainPage adsCount={adsCount} />} />
-            <Route path={AppRoute.Login} element={<LoginPage />} />
             <Route
-              path={AppRoute.Room}
+              path={AppRoute.Login}
               element={
                 <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                  <PropertyPage />
+                  <LoginPage />
                 </PrivateRoute>
               }
             />
+            <Route path={AppRoute.Room} element={<PropertyPage />} />
             <Route path='*' element={<Page404 />} />
           </Route>
         </Routes>
@@ -35,5 +35,3 @@ function App({ adsCount }: AppProps): JSX.Element {
     </HelmetProvider>
   );
 }
-
-export default App;
