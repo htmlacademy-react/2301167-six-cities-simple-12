@@ -1,0 +1,208 @@
+import { Offers } from '../types/offers-type';
+
+export const offers: Offers = [
+  {
+    id: 1,
+    preview: [
+      { src: '../img/room.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-02.jpg', alt: 'Studio' },
+      { src: '../img/apartment-03.jpg', alt: 'Studio' },
+      { src: '../img/studio-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+    ],
+    isPremium: true,
+    title: 'Beautiful & luxurious studio at great location',
+    rating: 4.8,
+    propertyType: {
+      premises: 'parent',
+      bedrooms: 3,
+      maxAdults: 4,
+    },
+    price: 120,
+    conveniences: [
+      'Wi-Fi',
+      'Washing machine',
+      'Towels',
+      'Heating',
+      'Coffee machine',
+      'Baby seat',
+      'Kitchen',
+      'Dishwasher',
+      'Cabel TV',
+      'Fridge',
+    ],
+    host: {
+      id: 1,
+      isPro: true,
+      avatar: {
+        src: 'img/avatar-angelina.jpg',
+        alt: 'Host avatar',
+      },
+      name: 'Angelina',
+    },
+    description:
+      'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+    city: {
+      name: 'Amsterdam',
+      locatoin: {
+        latitude: 1,
+        longitude: 1,
+        zoom: 1,
+      },
+    },
+  },
+  {
+    id: 2,
+    preview: [
+      { src: '../img/room.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-02.jpg', alt: 'Studio' },
+      { src: '../img/apartment-03.jpg', alt: 'Studio' },
+      { src: '../img/studio-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+    ],
+    isPremium: true,
+    title: 'Beautiful & luxurious studio at great location',
+    rating: 4.8,
+    propertyType: {
+      premises: 'parent',
+      bedrooms: 3,
+      maxAdults: 4,
+    },
+    price: 120,
+    conveniences: [
+      'Wi-Fi',
+      'Washing machine',
+      'Towels',
+      'Heating',
+      'Coffee machine',
+      'Baby seat',
+      'Kitchen',
+      'Dishwasher',
+      'Cabel TV',
+      'Fridge',
+    ],
+    host: {
+      id: 1,
+      isPro: true,
+      avatar: {
+        src: 'img/avatar-angelina.jpg',
+        alt: 'Host avatar',
+      },
+      name: 'Angelina',
+    },
+    description:
+      'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+    city: {
+      name: 'Amsterdam',
+      locatoin: {
+        latitude: 1,
+        longitude: 1,
+        zoom: 1,
+      },
+    },
+  },
+  {
+    id: 3,
+    preview: [
+      { src: '../img/room.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-02.jpg', alt: 'Studio' },
+      { src: '../img/apartment-03.jpg', alt: 'Studio' },
+      { src: '../img/studio-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+    ],
+    isPremium: true,
+    title: 'Beautiful & luxurious studio at great location',
+    rating: 4.8,
+    propertyType: {
+      premises: 'parent',
+      bedrooms: 3,
+      maxAdults: 4,
+    },
+    price: 120,
+    conveniences: [
+      'Wi-Fi',
+      'Washing machine',
+      'Towels',
+      'Heating',
+      'Coffee machine',
+      'Baby seat',
+      'Kitchen',
+      'Dishwasher',
+      'Cabel TV',
+      'Fridge',
+    ],
+    host: {
+      id: 1,
+      isPro: true,
+      avatar: {
+        src: 'img/avatar-angelina.jpg',
+        alt: 'Host avatar',
+      },
+      name: 'Angelina',
+    },
+    description:
+      'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+    city: {
+      name: 'Amsterdam',
+      locatoin: {
+        latitude: 1,
+        longitude: 1,
+        zoom: 1,
+      },
+    },
+  },
+  {
+    id: 4,
+    preview: [
+      { src: '../img/room.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-02.jpg', alt: 'Studio' },
+      { src: '../img/apartment-03.jpg', alt: 'Studio' },
+      { src: '../img/studio-01.jpg', alt: 'Studio' },
+      { src: '../img/apartment-01.jpg', alt: 'Studio' },
+    ],
+    isPremium: true,
+    title: 'Beautiful & luxurious studio at great location',
+    rating: 4.8,
+    propertyType: {
+      premises: 'parent',
+      bedrooms: 3,
+      maxAdults: 4,
+    },
+    price: 120,
+    conveniences: [
+      'Wi-Fi',
+      'Washing machine',
+      'Towels',
+      'Heating',
+      'Coffee machine',
+      'Baby seat',
+      'Kitchen',
+      'Dishwasher',
+      'Cabel TV',
+      'Fridge',
+    ],
+    host: {
+      id: 1,
+      isPro: true,
+      avatar: {
+        src: 'img/avatar-angelina.jpg',
+        alt: 'Host avatar',
+      },
+      name: 'Angelina',
+    },
+    description:
+      'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.',
+    city: {
+      name: 'Amsterdam',
+      locatoin: {
+        latitude: 1,
+        longitude: 1,
+        zoom: 1,
+      },
+    },
+  },
+];
