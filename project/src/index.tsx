@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
+import { offers } from './mocks/offers';
+import { reviews } from './mocks/reviews';
 
 const Counters = {
   AdsCount: 312,
@@ -12,6 +14,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App adsCount={Counters.AdsCount} />
+    <App adsCount={Counters.AdsCount} offers={offers} reviews={reviews} />
   </React.StrictMode>
 );

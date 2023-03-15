@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { Offers } from '../../types/offers-type';
+import { Reviews } from '../../types/review-type';
 import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
@@ -10,9 +12,15 @@ import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
   adsCount: number;
+  offers: Offers;
+  reviews: Reviews;
 };
 
-export default function App({ adsCount }: AppProps): JSX.Element {
+export default function App({
+  adsCount,
+  offers,
+  reviews,
+}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
