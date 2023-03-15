@@ -1,11 +1,16 @@
 import { Link } from 'react-router-dom';
 import MainPlaceCard from '../../components/main-place-card/main-place-card';
+import { Offers } from '../../types/offers-type';
 
 type MainPageProps = {
   adsCount: number;
+  offers: Offers;
 };
 
-export default function MainPage({ adsCount }: MainPageProps): JSX.Element {
+export default function MainPage({
+  adsCount,
+  offers,
+}: MainPageProps): JSX.Element {
   return (
     <main className='page__main page__main--index'>
       <h1 className='visually-hidden'>Cities</h1>

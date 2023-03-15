@@ -1,8 +1,18 @@
 import { Helmet } from 'react-helmet-async';
 import PropertyImageCard from '../../components/property-image-card/property-image-card';
 import PropertyPlaceCard from '../../components/property-place-card/property-place-card';
+import { Offer } from '../../types/offers-type';
+import { Reviews } from '../../types/review-type';
 
-export default function PropertyPage(): JSX.Element {
+type PropertyPageProps = {
+  offer: Offer;
+  reviews: Reviews;
+};
+
+export default function PropertyPage({
+  offer,
+  reviews,
+}: PropertyPageProps): JSX.Element {
   return (
     <>
       <Helmet>

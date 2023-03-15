@@ -26,7 +26,10 @@ export default function App({
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<Layout />}>
-            <Route index element={<MainPage adsCount={adsCount} />} />
+            <Route
+              index
+              element={<MainPage adsCount={adsCount} offers={offers} />}
+            />
             <Route
               path={AppRoute.Login}
               element={
@@ -35,7 +38,10 @@ export default function App({
                 </PrivateRoute>
               }
             />
-            <Route path={AppRoute.Room} element={<PropertyPage />} />
+            <Route
+              path={AppRoute.Room}
+              element={<PropertyPage offer={offers[0]} reviews={reviews} />}
+            />
             <Route path='*' element={<Page404 />} />
           </Route>
         </Routes>
