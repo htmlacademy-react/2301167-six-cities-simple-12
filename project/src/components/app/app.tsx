@@ -11,25 +11,17 @@ import Page404 from '../../pages/Page-404/Page404';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
-  adsCount: number;
   offers: Offers;
   reviews: Reviews;
 };
 
-export default function App({
-  adsCount,
-  offers,
-  reviews,
-}: AppProps): JSX.Element {
+export default function App({ offers, reviews }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<Layout />}>
-            <Route
-              index
-              element={<MainPage adsCount={adsCount} offers={offers} />}
-            />
+            <Route index element={<MainPage offers={offers} />} />
             <Route
               path={AppRoute.Login}
               element={
@@ -40,7 +32,13 @@ export default function App({
             />
             <Route
               path={AppRoute.Room}
-              element={<PropertyPage offer={offers[0]} reviews={reviews} />}
+              element={
+                <PropertyPage
+                  offer={offers[0]}
+                  offers={offers}
+                  reviews={reviews}
+                />
+              }
             />
             <Route path='*' element={<Page404 />} />
           </Route>

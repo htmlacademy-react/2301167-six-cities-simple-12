@@ -1,18 +1,23 @@
 import { Helmet } from 'react-helmet-async';
-import PropertyImageCard from '../../components/property-image-card/property-image-card';
-import PropertyPlaceCard from '../../components/property-place-card/property-place-card';
+import NearPlacesList from '../../components/near-places-list/near-places-list';
 import { Offer } from '../../types/offers-type';
+import { Offers } from '../../types/offers-type';
 import { Reviews } from '../../types/review-type';
 
 type PropertyPageProps = {
   offer: Offer;
+  offers: Offers;
   reviews: Reviews;
 };
 
 export default function PropertyPage({
   offer,
+  offers,
   reviews,
 }: PropertyPageProps): JSX.Element {
+  const images = offer.preview;
+  const { isPremium } = offer;
+
   return (
     <>
       <Helmet>
@@ -23,19 +28,24 @@ export default function PropertyPage({
         <section className='property'>
           <div className='property__gallery-container container'>
             <div className='property__gallery'>
-              <PropertyImageCard />
-              <PropertyImageCard />
-              <PropertyImageCard />
-              <PropertyImageCard />
-              <PropertyImageCard />
-              <PropertyImageCard />
+              {images.map((image) => (
+                <div className='property__image-wrapper' key={image.alt}>
+                  <img
+                    className='property__image'
+                    src={image.src}
+                    alt={image.alt}
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <div className='property__container container'>
             <div className='property__wrapper'>
-              <div className='property__mark'>
-                <span>Premium</span>
-              </div>
+              {isPremium && (
+                <div className='property__mark'>
+                  <span>Premium</span>
+                </div>
+              )}
               <div className='property__name-wrapper'>
                 <h1 className='property__name'>
                   Beautiful &amp; luxurious studio at great location
@@ -269,11 +279,7 @@ export default function PropertyPage({
             <h2 className='near-places__title'>
               Other places in the neighbourhood
             </h2>
-            <div className='near-places__list places__list'>
-              <PropertyPlaceCard />
-              <PropertyPlaceCard />
-              <PropertyPlaceCard />
-            </div>
+            <NearPlacesList offers={offers} />
           </section>
         </div>
       </main>

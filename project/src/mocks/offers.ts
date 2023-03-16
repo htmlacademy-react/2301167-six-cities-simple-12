@@ -15,7 +15,7 @@ export const offers: Offers = [
     title: 'Beautiful & luxurious studio at great location',
     rating: 4.8,
     propertyType: {
-      premises: 'parent',
+      premises: 'Apartment',
       bedrooms: 3,
       maxAdults: 4,
     },
@@ -66,7 +66,7 @@ export const offers: Offers = [
     title: 'Beautiful & luxurious studio at great location',
     rating: 4.8,
     propertyType: {
-      premises: 'parent',
+      premises: 'Apartment',
       bedrooms: 3,
       maxAdults: 4,
     },
@@ -117,7 +117,7 @@ export const offers: Offers = [
     title: 'Beautiful & luxurious studio at great location',
     rating: 4.8,
     propertyType: {
-      premises: 'parent',
+      premises: 'Apartment',
       bedrooms: 3,
       maxAdults: 4,
     },
@@ -168,7 +168,7 @@ export const offers: Offers = [
     title: 'Beautiful & luxurious studio at great location',
     rating: 4.8,
     propertyType: {
-      premises: 'parent',
+      premises: 'Apartment',
       bedrooms: 3,
       maxAdults: 4,
     },
