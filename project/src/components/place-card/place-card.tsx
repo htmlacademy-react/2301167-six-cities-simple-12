@@ -3,13 +3,20 @@ import { Offer } from '../../types/offers-type';
 
 type PlaceCardProps = {
   offer: Offer;
+  onMouseEnterHandler: (id: number) => void;
 };
 
-export default function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
+export default function PlaceCard({
+  offer,
+  onMouseEnterHandler,
+}: PlaceCardProps): JSX.Element {
   const { isPremium, price, rating, title, previewImage, type } = offer;
 
   return (
-    <article className='cities__card place-card'>
+    <article
+      className='cities__card place-card'
+      onMouseEnter={() => onMouseEnterHandler(offer.id)}
+    >
       {isPremium && (
         <div className='place-card__mark'>
           <span>Premium</span>

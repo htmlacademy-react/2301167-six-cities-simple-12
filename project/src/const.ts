@@ -9,3 +9,5 @@ export enum AuthorizationStatus {
   NoAuth = 'NO-AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const ZERO_ID = 0;
