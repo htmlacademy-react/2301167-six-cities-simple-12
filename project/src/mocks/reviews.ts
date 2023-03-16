@@ -6,10 +6,7 @@ export const reviews: Reviews = [
     user: {
       id: 1,
       isPro: false,
-      avatar: {
-        src: '../img/avatar-max.jpg',
-        alt: 'Reviews avatar',
-      },
+      avatarUrl: '../img/avatar-max.jpg',
       name: 'Max',
     },
     rating: 4,

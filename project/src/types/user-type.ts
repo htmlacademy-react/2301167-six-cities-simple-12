@@ -1,9 +1,6 @@
 export type User = {
+  avatarUrl: string;
   id: number;
   isPro: boolean;
-  avatar: {
-    src: string;
-    alt: string;
-  };
   name: string;
 };

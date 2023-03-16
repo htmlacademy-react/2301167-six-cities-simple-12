@@ -3,31 +3,24 @@ import { User } from './user-type';
 export type Offers = Offer[];
 
 export type Offer = {
-  id: number;
-  preview: previewImage[];
-  isPremium: boolean;
-  title: string;
-  rating: number;
-  propertyType: PropertyType;
-  price: number;
-  conveniences: string[];
-  host: User;
-  description: string;
-  city: {
-    name: string;
-    locatoin: Location;
-  };
-};
-
-export type previewImage = {
-  src: string;
-  alt: string;
-};
-
-export type PropertyType = {
-  premises: string;
   bedrooms: number;
+  city: {
+    locatoin: Location;
+    name: string;
+  };
+  description: string;
+  goods: string[];
+  host: User;
+  id: number;
+  images: string[];
+  isPremium: boolean;
+  locatoin: Location;
   maxAdults: number;
+  previewImage: string;
+  price: number;
+  rating: number;
+  title: string;
+  type: string;
 };
 
 export type Location = {

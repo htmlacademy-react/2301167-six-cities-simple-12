@@ -15,8 +15,7 @@ export default function PropertyPage({
   offers,
   reviews,
 }: PropertyPageProps): JSX.Element {
-  const images = offer.preview;
-  const { isPremium } = offer;
+  const { isPremium, images } = offer;
 
   return (
     <>
@@ -29,12 +28,8 @@ export default function PropertyPage({
           <div className='property__gallery-container container'>
             <div className='property__gallery'>
               {images.map((image) => (
-                <div className='property__image-wrapper' key={image.alt}>
-                  <img
-                    className='property__image'
-                    src={image.src}
-                    alt={image.alt}
-                  />
+                <div className='property__image-wrapper' key={image}>
+                  <img className='property__image' src={image} alt='' />
                 </div>
               ))}
             </div>

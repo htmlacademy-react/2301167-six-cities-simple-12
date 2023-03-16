@@ -6,9 +6,7 @@ type PlaceCardProps = {
 };
 
 export default function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
-  const { isPremium, price, rating, title } = offer;
-  const previewImg = offer.preview[0];
-  const premises = offer.propertyType.premises;
+  const { isPremium, price, rating, title, previewImage, type } = offer;
 
   return (
     <article className='cities__card place-card'>
@@ -21,10 +19,10 @@ export default function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
         <Link to='#'>
           <img
             className='place-card__image'
-            src={previewImg.src}
+            src={previewImage}
+            alt=''
             width='260'
             height='200'
-            alt={previewImg.alt}
           />
         </Link>
       </div>
@@ -44,7 +42,7 @@ export default function PlaceCard({ offer }: PlaceCardProps): JSX.Element {
         <h2 className='place-card__name'>
           <Link to='#'>{title}</Link>
         </h2>
-        <p className='place-card__type'>{premises}</p>
+        <p className='place-card__type'>{type}</p>
       </div>
     </article>
   );
