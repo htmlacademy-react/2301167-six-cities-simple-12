@@ -11,3 +11,4 @@ export enum AuthorizationStatus {
 }
 
 export const ZERO_ID = 0;
+export const MULTIPLIER_FOR_RATING = 100 / 5;

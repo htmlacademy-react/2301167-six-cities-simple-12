@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offers-type';
+import { getStarsOfRating } from '../../get-stars-of-rating';
 
 type PlaceCardProps = {
   offer: Offer;
@@ -23,7 +24,7 @@ export default function PlaceCard({
         </div>
       )}
       <div className='cities__image-wrapper place-card__image-wrapper'>
-        <Link to='#'>
+        <Link to={`/offer/${offer.id}`}>
           <img
             className='place-card__image'
             src={previewImage}
@@ -42,12 +43,12 @@ export default function PlaceCard({
         </div>
         <div className='place-card__rating rating'>
           <div className='place-card__stars rating__stars'>
-            <span style={{ width: `${Math.round(rating * 20)}%` }}></span>
+            <span style={{ width: `${getStarsOfRating(rating)}%` }} />
             <span className='visually-hidden'>Rating</span>
           </div>
         </div>
         <h2 className='place-card__name'>
-          <Link to='#'>{title}</Link>
+          <Link to={`/offer/${offer.id}`}>{title}</Link>
         </h2>
         <p className='place-card__type'>{type}</p>
       </div>

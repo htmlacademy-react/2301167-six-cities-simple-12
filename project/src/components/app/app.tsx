@@ -32,13 +32,7 @@ export default function App({ offers, reviews }: AppProps): JSX.Element {
             />
             <Route
               path={AppRoute.Room}
-              element={
-                <PropertyPage
-                  offer={offers[0]}
-                  offers={offers}
-                  reviews={reviews}
-                />
-              }
+              element={<PropertyPage offers={offers} reviews={reviews} />}
             />
             <Route path='*' element={<Page404 />} />
           </Route>

@@ -1,21 +1,39 @@
 import { Helmet } from 'react-helmet-async';
+import { useParams } from 'react-router-dom';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import { Offer } from '../../types/offers-type';
 import { Offers } from '../../types/offers-type';
 import { Reviews } from '../../types/review-type';
+import { getStarsOfRating } from '../../get-stars-of-rating';
 
 type PropertyPageProps = {
-  offer: Offer;
   offers: Offers;
   reviews: Reviews;
 };
 
 export default function PropertyPage({
-  offer,
   offers,
   reviews,
 }: PropertyPageProps): JSX.Element {
-  const { isPremium, images } = offer;
+  const { id } = useParams();
+
+  const offer = offers.find((room) => room.id === Number(id));
+  if (!offer) {
+    throw new Error('URL not exist');
+  }
+
+  const {
+    images,
+    isPremium,
+    type,
+    title,
+    rating,
+    bedrooms,
+    maxAdults,
+    price,
+    goods,
+    host,
+    description,
+  } = offer;
 
   return (
     <>
@@ -42,47 +60,40 @@ export default function PropertyPage({
                 </div>
               )}
               <div className='property__name-wrapper'>
-                <h1 className='property__name'>
-                  Beautiful &amp; luxurious studio at great location
-                </h1>
+                <h1 className='property__name'>{title}</h1>
               </div>
               <div className='property__rating rating'>
                 <div className='property__stars rating__stars'>
-                  <span style={{ width: '80%' }}></span>
+                  <span style={{ width: `${getStarsOfRating(rating)}%` }} />
                   <span className='visually-hidden'>Rating</span>
                 </div>
                 <span className='property__rating-value rating__value'>
-                  4.8
+                  {rating}
                 </span>
               </div>
               <ul className='property__features'>
                 <li className='property__feature property__feature--entire'>
-                  Apartment
+                  {type}
                 </li>
                 <li className='property__feature property__feature--bedrooms'>
-                  3 Bedrooms
+                  {bedrooms} Bedrooms
                 </li>
                 <li className='property__feature property__feature--adults'>
-                  Max 4 adults
+                  Max {maxAdults} adults
                 </li>
               </ul>
               <div className='property__price'>
-                <b className='property__price-value'>&euro;120</b>
+                <b className='property__price-value'>&euro;{price}</b>
                 <span className='property__price-text'>&nbsp;night</span>
               </div>
               <div className='property__inside'>
                 <h2 className='property__inside-title'>What&apos;s inside</h2>
                 <ul className='property__inside-list'>
-                  <li className='property__inside-item'>Wi-Fi</li>
-                  <li className='property__inside-item'>Washing machine</li>
-                  <li className='property__inside-item'>Towels</li>
-                  <li className='property__inside-item'>Heating</li>
-                  <li className='property__inside-item'>Coffee machine</li>
-                  <li className='property__inside-item'>Baby seat</li>
-                  <li className='property__inside-item'>Kitchen</li>
-                  <li className='property__inside-item'>Dishwasher</li>
-                  <li className='property__inside-item'>Cabel TV</li>
-                  <li className='property__inside-item'>Fridge</li>
+                  {goods.map((good) => (
+                    <li className='property__inside-item' key={good}>
+                      {good}
+                    </li>
+                  ))}
                 </ul>
               </div>
               <div className='property__host'>
@@ -91,26 +102,19 @@ export default function PropertyPage({
                   <div className='property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper'>
                     <img
                       className='property__avatar user__avatar'
-                      src='img/avatar-angelina.jpg'
+                      src={host.avatarUrl}
                       width='74'
                       height='74'
-                      alt='Host avatar'
+                      alt=''
                     />
                   </div>
-                  <span className='property__user-name'> Angelina </span>
-                  <span className='property__user-status'> Pro </span>
+                  <span className='property__user-name'> {host.name} </span>
+                  {host.isPro && (
+                    <span className='property__user-status'> Pro </span>
+                  )}
                 </div>
                 <div className='property__description'>
-                  <p className='property__text'>
-                    A quiet cozy and picturesque that hides behind a a river by
-                    the unique lightness of Amsterdam. The building is green and
-                    from 18th century.
-                  </p>
-                  <p className='property__text'>
-                    An independent House, strategically located between Rembrand
-                    Square and National Opera, but where the bustle of the city
-                    comes to rest in this alley flowery and colorful.
-                  </p>
+                  <p className='property__text'>{description}</p>
                 </div>
               </div>
               <section className='property__reviews reviews'>
@@ -134,7 +138,9 @@ export default function PropertyPage({
                     <div className='reviews__info'>
                       <div className='reviews__rating rating'>
                         <div className='reviews__stars rating__stars'>
-                          <span style={{ width: '80%' }}></span>
+                          <span
+                            style={{ width: `${getStarsOfRating(rating)}%` }}
+                          />
                           <span className='visually-hidden'>Rating</span>
                         </div>
                       </div>
