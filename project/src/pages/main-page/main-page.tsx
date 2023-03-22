@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import OffersListContainer from '../../components/offers-list-container/offers-list-container';
-import { Offers } from '../../types/offers-type';
+import { Offers, City } from '../../types/offers-type';
 
 type MainPageProps = {
   offers: Offers;
+  city: City;
 };
 
-export default function MainPage({ offers }: MainPageProps): JSX.Element {
+export default function MainPage({ offers, city }: MainPageProps): JSX.Element {
   return (
     <main className='page__main page__main--index'>
       <h1 className='visually-hidden'>Cities</h1>
@@ -50,7 +51,7 @@ export default function MainPage({ offers }: MainPageProps): JSX.Element {
         </section>
       </div>
       <div className='cities'>
-        <OffersListContainer offers={offers} />
+        <OffersListContainer offers={offers} city={city} />
       </div>
     </main>
   );

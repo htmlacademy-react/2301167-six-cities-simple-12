@@ -1,13 +1,25 @@
+import { useState } from 'react';
 import CitiesPlacesList from '../cities-places-list/cities-places-list';
-import { Offers } from '../../types/offers-type';
+import Map from '../map/map';
+import { Offers, Offer, City } from '../../types/offers-type';
 
 type OffersListContainerProps = {
   offers: Offers;
+  city: City;
 };
 
 export default function OffersListContainer({
   offers,
+  city,
 }: OffersListContainerProps): JSX.Element {
+  const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
+
+  const onOfferListHover = (offerId: number | null) => {
+    const currentOffer = offers.find((offer) => offer.id === offerId);
+
+    setActiveOffer(currentOffer);
+  };
+
   return (
     <div className='cities__places-container container'>
       <section className='cities__places places'>
@@ -38,10 +50,10 @@ export default function OffersListContainer({
             </li>
           </ul>
         </form>
-        <CitiesPlacesList offers={offers} />
+        <CitiesPlacesList offers={offers} onOfferListHover={onOfferListHover} />
       </section>
       <div className='cities__right-section'>
-        <section className='cities__map map'></section>
+        <Map city={city} offers={offers} activeOffer={activeOffer} />
       </div>
     </div>
   );
