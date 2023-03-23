@@ -15,12 +15,6 @@ export default function OffersListContainer({
 }: OffersListContainerProps): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
 
-  const onOfferListHover = (offerId: number | null) => {
-    const currentOffer = offers.find((offer) => offer.id === offerId);
-
-    setActiveOffer(currentOffer);
-  };
-
   return (
     <div className='cities__places-container container'>
       <section className='cities__places places'>
@@ -29,7 +23,10 @@ export default function OffersListContainer({
           {offers.length} places to stay in Amsterdam
         </b>
         <PlacesSorting />
-        <CitiesPlacesList offers={offers} onOfferListHover={onOfferListHover} />
+        <CitiesPlacesList
+          offers={offers}
+          onMouseEnterHandler={(offer) => setActiveOffer(offer)}
+        />
       </section>
       <div className='cities__right-section'>
         <Map city={city} offers={offers} activeOffer={activeOffer} />
