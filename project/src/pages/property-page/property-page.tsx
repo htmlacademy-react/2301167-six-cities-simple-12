@@ -1,22 +1,30 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Page404 from '../Page-404/Page404';
+import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import { Offer, Offers } from '../../types/offers-type';
+import { Offer, Offers, City } from '../../types/offers-type';
 import { Reviews } from '../../types/review-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
 import UsersReviews from '../../components/users-reviews/users-reviews';
+import { useState } from 'react';
 
 type PropertyPageProps = {
   offers: Offers;
   reviews: Reviews;
+  city: City;
 };
 
 export default function PropertyPage({
   offers,
   reviews,
+  city,
 }: PropertyPageProps): JSX.Element {
-  const { id } = useParams();
+  const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
+
+  const { id } = useParams<string>();
+
+  const filteredOffers = offers.filter((offer) => offer.id !== Number(id));
 
   const offer = offers.find((room) => room.id === Number(id)) as Offer;
 
@@ -123,14 +131,23 @@ export default function PropertyPage({
               <UsersReviews reviews={reviews} />
             </div>
           </div>
-          <section className='property__map map'></section>
+          <section className='property__map map'>
+            <Map
+              city={city}
+              offers={filteredOffers}
+              activeOffer={activeOffer}
+            />
+          </section>
         </section>
         <div className='container'>
           <section className='near-places places'>
             <h2 className='near-places__title'>
               Other places in the neighbourhood
             </h2>
-            <NearPlacesList offers={offers} />
+            <NearPlacesList
+              offers={filteredOffers}
+              onMouseEnterHandler={(offerItem) => setActiveOffer(offerItem)}
+            />
           </section>
         </div>
       </main>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { Offers } from '../../types/offers-type';
+import { Offers, City } from '../../types/offers-type';
 import { Reviews } from '../../types/review-type';
 import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
@@ -13,18 +13,16 @@ import PrivateRoute from '../private-route/private-route';
 type AppProps = {
   offers: Offers;
   reviews: Reviews;
+  city: City;
 };
 
-export default function App({ offers, reviews }: AppProps): JSX.Element {
+export default function App({ offers, reviews, city }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<Layout />}>
-            <Route
-              index
-              element={<MainPage offers={offers} city={offers[0].city} />}
-            />
+            <Route index element={<MainPage offers={offers} city={city} />} />
             <Route
               path={AppRoute.Login}
               element={
@@ -35,7 +33,9 @@ export default function App({ offers, reviews }: AppProps): JSX.Element {
             />
             <Route
               path={AppRoute.Room}
-              element={<PropertyPage offers={offers} reviews={reviews} />}
+              element={
+                <PropertyPage offers={offers} reviews={reviews} city={city} />
+              }
             />
             <Route path='*' element={<Page404 />} />
           </Route>

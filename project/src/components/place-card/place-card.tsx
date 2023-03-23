@@ -4,7 +4,7 @@ import { getStarsOfRating } from '../../get-stars-of-rating';
 
 type PlaceCardProps = {
   offer: Offer;
-  onMouseEnterHandler: (id: number) => void;
+  onMouseEnterHandler: (offer: Offer) => void;
 };
 
 export default function PlaceCard({
@@ -16,7 +16,7 @@ export default function PlaceCard({
   return (
     <article
       className='cities__card place-card'
-      onMouseEnter={() => onMouseEnterHandler(offer.id)}
+      onMouseEnter={() => onMouseEnterHandler(offer)}
     >
       {isPremium && (
         <div className='place-card__mark'>
