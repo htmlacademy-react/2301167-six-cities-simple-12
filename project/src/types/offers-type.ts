@@ -23,6 +23,11 @@ export type Offer = {
   type: string;
 };
 
+export type City = {
+  locatoin: Location;
+  name: string;
+};
+
 export type Location = {
   latitude: number;
   longitude: number;

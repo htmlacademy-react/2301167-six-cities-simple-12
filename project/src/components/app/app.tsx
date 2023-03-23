@@ -21,7 +21,10 @@ export default function App({ offers, reviews }: AppProps): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<Layout />}>
-            <Route index element={<MainPage offers={offers} />} />
+            <Route
+              index
+              element={<MainPage offers={offers} city={offers[0].city} />}
+            />
             <Route
               path={AppRoute.Login}
               element={

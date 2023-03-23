@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
+import Page404 from '../Page-404/Page404';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import { Offers } from '../../types/offers-type';
+import { Offer, Offers } from '../../types/offers-type';
 import { Reviews } from '../../types/review-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
 import UsersReviews from '../../components/users-reviews/users-reviews';
@@ -17,9 +18,10 @@ export default function PropertyPage({
 }: PropertyPageProps): JSX.Element {
   const { id } = useParams();
 
-  const offer = offers.find((room) => room.id === Number(id));
+  const offer = offers.find((room) => room.id === Number(id)) as Offer;
+
   if (!offer) {
-    throw new Error('URL not exist');
+    return <Page404 />;
   }
 
   const {

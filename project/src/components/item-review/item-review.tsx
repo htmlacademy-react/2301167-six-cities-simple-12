@@ -6,7 +6,7 @@ type ItemReviewProps = {
 };
 
 export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
-  const { user, rating, text, date } = review;
+  const { user, rating, comment, date } = review;
 
   return (
     <li className='reviews__item'>
@@ -29,7 +29,7 @@ export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
             <span className='visually-hidden'>Rating</span>
           </div>
         </div>
-        <p className='reviews__text'>{text}</p>
+        <p className='reviews__text'>{comment}</p>
         <time className='reviews__time' dateTime='2019-04-24'>
           {date}
         </time>
