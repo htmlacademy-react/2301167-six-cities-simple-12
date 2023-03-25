@@ -14,15 +14,26 @@ type AppProps = {
   offers: Offers;
   reviews: Reviews;
   city: City;
+  locations: string[];
 };
 
-export default function App({ offers, reviews, city }: AppProps): JSX.Element {
+export default function App({
+  offers,
+  reviews,
+  city,
+  locations,
+}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<Layout />}>
-            <Route index element={<MainPage offers={offers} city={city} />} />
+            <Route
+              index
+              element={
+                <MainPage offers={offers} city={city} locations={locations} />
+              }
+            />
             <Route
               path={AppRoute.Login}
               element={
