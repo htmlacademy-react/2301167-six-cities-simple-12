@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import App from './components/app/app';
 import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
@@ -12,6 +14,8 @@ const city = offers[0].city;
 
 root.render(
   <React.StrictMode>
-    <App offers={offers} reviews={reviews} city={city} />
+    <Provider store={store}>
+      <App offers={offers} reviews={reviews} city={city} />
+    </Provider>
   </React.StrictMode>
 );
