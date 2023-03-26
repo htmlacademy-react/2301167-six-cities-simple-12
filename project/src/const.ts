@@ -17,7 +17,7 @@ export const MULTIPLIER_FOR_RATING = 100 / MAX_RATING;
 
 export const ArrRatingStars = [5, 4, 3, 2, 1];
 
-export const ArrCitiesForNav = [
+export const LOCATIONS_LIST = [
   'Paris',
   'Cologne',
   'Brussels',
