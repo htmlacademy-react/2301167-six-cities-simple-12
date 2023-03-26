@@ -30,9 +30,7 @@ export default function App({
           <Route path={AppRoute.Main} element={<Layout />}>
             <Route
               index
-              element={
-                <MainPage offers={offers} city={city} locations={locations} />
-              }
+              element={<MainPage city={city} locations={locations} />}
             />
             <Route
               path={AppRoute.Login}

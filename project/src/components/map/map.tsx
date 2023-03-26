@@ -52,7 +52,7 @@ export default function Map({
   return (
     <section
       className='cities__map map'
-      style={{ width: '100%', height: '100%' }}
+      style={{ width: '100%', minHeight: '600px' }}
       ref={mapRef}
     />
   );
