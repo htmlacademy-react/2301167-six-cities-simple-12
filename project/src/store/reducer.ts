@@ -1,17 +1,21 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { LOCATIONS_LIST } from '../const';
-import { offers } from '../mocks/offers';
 import { switchCity, completionListOffrs } from './action';
+import { createReducer } from '@reduxjs/toolkit';
+import { offers } from '../mocks/offers';
 import { Offers } from '../types/offers-type';
+import { LOCATIONS_LIST } from '../const';
 
 type State = {
   city: string;
   offersOfCurrentCity: Offers;
 };
 
+const initialCity = LOCATIONS_LIST[0];
+
+const initialOffers = offers.filter((offer) => offer.city.name === initialCity);
+
 const initialState: State = {
-  city: LOCATIONS_LIST[0],
-  offersOfCurrentCity: [],
+  city: initialCity,
+  offersOfCurrentCity: initialOffers,
 };
 
 export const reducer = createReducer(initialState, (builder) => {

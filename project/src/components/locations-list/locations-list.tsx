@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { switchCity, completionListOffrs } from '../../store/action';
 
 type LocationsListProps = {
@@ -10,6 +10,8 @@ export default function LocationsList({
   locations,
 }: LocationsListProps): JSX.Element {
   const dispatch = useAppDispatch();
+
+  const currentCity = useAppSelector((state) => state.city);
 
   return (
     <section className='locations container'>
@@ -23,7 +25,12 @@ export default function LocationsList({
               dispatch(completionListOffrs());
             }}
           >
-            <Link className='locations__item-link tabs__item' to='#'>
+            <Link
+              className={`locations__item-link tabs__item ${
+                city === currentCity ? 'tabs__item--active' : ''
+              }`}
+              to='#'
+            >
               <span>{city}</span>
             </Link>
           </li>
