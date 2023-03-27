@@ -26,7 +26,7 @@ export const LOCATIONS_LIST = [
   'Dusseldorf',
 ];
 
-export const SORTING_OFFERS = [
+export const OPTIONS_SORTING = [
   'Popular',
   'Price: low to high',
   'Price: high to low',

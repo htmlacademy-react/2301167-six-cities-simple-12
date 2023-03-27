@@ -2,21 +2,21 @@ import { switchCity, completionListOffrs, sortingOffers } from './action';
 import { createReducer } from '@reduxjs/toolkit';
 import { offers } from '../mocks/offers';
 import { Offers } from '../types/offers-type';
-import { LOCATIONS_LIST, SORTING_OFFERS } from '../const';
+import { LOCATIONS_LIST, OPTIONS_SORTING } from '../const';
 
 type State = {
   city: string;
-  sorting: string;
+  optionSorting: string;
   offersOfCurrentCity: Offers;
 };
 
 const initialCity = LOCATIONS_LIST[0];
-const initialSorting = SORTING_OFFERS[0];
+const initialSorting = OPTIONS_SORTING[0];
 const initialOffers = offers.filter((offer) => offer.city.name === initialCity);
 
 const initialState: State = {
   city: initialCity,
-  sorting: initialSorting,
+  optionSorting: initialSorting,
   offersOfCurrentCity: initialOffers,
 };
 
@@ -26,7 +26,7 @@ export const reducer = createReducer(initialState, (builder) => {
       state.city = action.payload;
     })
     .addCase(sortingOffers, (state, action) => {
-      state.sorting = action.payload;
+      state.optionSorting = action.payload;
     })
     .addCase(completionListOffrs, (state) => {
       state.offersOfCurrentCity = offers.filter(
