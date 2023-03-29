@@ -26,8 +26,12 @@ export const LOCATIONS_LIST = [
   'Dusseldorf',
 ];
 
-export const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+export const OPTIONS_SORTING = [
+  'Popular',
+  'Price: low to high',
+  'Price: high to low',
+  'Top rated first',
+];
 
-export const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+export const URL_MARKER_DEFAULT = '../img/pin.svg';
+export const URL_MARKER_CURRENT = '../img/pin-active.svg';
