@@ -35,3 +35,8 @@ export const OPTIONS_SORTING = [
 
 export const URL_MARKER_DEFAULT = '../img/pin.svg';
 export const URL_MARKER_CURRENT = '../img/pin-active.svg';
+
+export const BACKEND_URL = 'https://12.react.pages.academy/six-cities-simple';
+export const REQUEST_TIMEOUT = 5000;
+
+export const AUTH_TOKEN_KEY_NAME = 'six-cities-token';
