@@ -1,12 +1,12 @@
 import { useRef, useEffect } from 'react';
 import { Icon, Marker } from 'leaflet';
 import useMap from '../../hooks/useMap';
-import { Offers, Offer, City } from '../../types/offers-type';
+import { Offers, Offer } from '../../types/offers-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
+import { useAppSelector } from '../../hooks';
 
 type MapProps = {
-  city: City;
   offers: Offers;
   activeOffer: Offer | undefined;
 };
@@ -22,11 +22,9 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40],
 });
 
-export default function Map({
-  city,
-  offers,
-  activeOffer,
-}: MapProps): JSX.Element {
+export default function Map({ offers, activeOffer }: MapProps): JSX.Element {
+  const { city } = useAppSelector((state) => state.offersOfCurrentCity[0]);
+
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -34,8 +32,8 @@ export default function Map({
     if (map) {
       offers.forEach((offer) => {
         const marker = new Marker({
-          lat: offer.locatoin.latitude,
-          lng: offer.locatoin.longitude,
+          lat: offer.location.latitude,
+          lng: offer.location.longitude,
         });
 
         marker

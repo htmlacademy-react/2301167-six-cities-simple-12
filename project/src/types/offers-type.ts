@@ -5,7 +5,7 @@ export type Offers = Offer[];
 export type Offer = {
   bedrooms: number;
   city: {
-    locatoin: Location;
+    location: Location;
     name: string;
   };
   description: string;
@@ -14,7 +14,7 @@ export type Offer = {
   id: number;
   images: string[];
   isPremium: boolean;
-  locatoin: Location;
+  location: Location;
   maxAdults: number;
   previewImage: string;
   price: number;
@@ -24,7 +24,7 @@ export type Offer = {
 };
 
 export type City = {
-  locatoin: Location;
+  location: Location;
   name: string;
 };
 
