@@ -3,26 +3,25 @@ import { useParams } from 'react-router-dom';
 import Page404 from '../Page-404/Page404';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import { Offer, Offers, City } from '../../types/offers-type';
+import { Offer } from '../../types/offers-type';
 import { Reviews } from '../../types/review-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
 import UsersReviews from '../../components/users-reviews/users-reviews';
 import { useState } from 'react';
+import { useAppSelector } from '../../hooks';
 
 type PropertyPageProps = {
-  offers: Offers;
   reviews: Reviews;
-  city: City;
 };
 
 export default function PropertyPage({
-  offers,
   reviews,
-  city,
 }: PropertyPageProps): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
 
   const { id } = useParams<string>();
+
+  const offers = useAppSelector((state) => state.offersOfCurrentCity);
 
   const filteredOffers = offers.filter((offer) => offer.id !== Number(id));
 
@@ -132,11 +131,7 @@ export default function PropertyPage({
             </div>
           </div>
           <section className='property__map map'>
-            <Map
-              city={city}
-              offers={filteredOffers}
-              activeOffer={activeOffer}
-            />
+            <Map offers={filteredOffers} activeOffer={activeOffer} />
           </section>
         </section>
         <div className='container'>

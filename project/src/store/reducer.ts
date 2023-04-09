@@ -7,7 +7,6 @@ import {
   setOffersLoadingStatus,
 } from './action';
 import { createReducer } from '@reduxjs/toolkit';
-// import { offers } from '../mocks/offers';
 import { Offers } from '../types/offers-type';
 import { LOCATIONS_LIST, OPTIONS_SORTING, AuthorizationStatus } from '../const';
 
@@ -47,7 +46,7 @@ export const reducer = createReducer(initialState, (builder) => {
       );
     })
     .addCase(loadOffers, (state, action) => {
-      state.offersOfCurrentCity = action.payload;
+      state.offers = action.payload;
     })
     .addCase(setOffersLoadingStatus, (state, action) => {
       state.isOffersLoading = action.payload;
