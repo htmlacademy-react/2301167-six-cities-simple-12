@@ -4,7 +4,7 @@ export const offers: Offers = [
   {
     bedrooms: 3,
     city: {
-      locatoin: {
+      location: {
         latitude: 52.370216,
         longitude: 4.895168,
         zoom: 10,
@@ -40,7 +40,7 @@ export const offers: Offers = [
       '../img/studio-01.jpg',
     ],
     isPremium: true,
-    locatoin: {
+    location: {
       latitude: 52.3909553943508,
       longitude: 4.85309666406198,
       zoom: 10,
@@ -55,7 +55,7 @@ export const offers: Offers = [
   {
     bedrooms: 3,
     city: {
-      locatoin: {
+      location: {
         latitude: 52.370216,
         longitude: 4.895168,
         zoom: 10,
@@ -91,7 +91,7 @@ export const offers: Offers = [
       '../img/studio-01.jpg',
     ],
     isPremium: true,
-    locatoin: {
+    location: {
       latitude: 52.3609553943508,
       longitude: 4.85309666406198,
       zoom: 10,
@@ -106,7 +106,7 @@ export const offers: Offers = [
   {
     bedrooms: 3,
     city: {
-      locatoin: {
+      location: {
         latitude: 52.370216,
         longitude: 4.895168,
         zoom: 10,
@@ -142,7 +142,7 @@ export const offers: Offers = [
       '../img/studio-01.jpg',
     ],
     isPremium: false,
-    locatoin: {
+    location: {
       latitude: 52.3909553943508,
       longitude: 4.929309666406198,
       zoom: 10,
@@ -157,7 +157,7 @@ export const offers: Offers = [
   {
     bedrooms: 3,
     city: {
-      locatoin: {
+      location: {
         latitude: 52.370216,
         longitude: 4.895168,
         zoom: 10,
@@ -193,7 +193,7 @@ export const offers: Offers = [
       '../img/studio-01.jpg',
     ],
     isPremium: true,
-    locatoin: {
+    location: {
       latitude: 52.3809553943508,
       longitude: 4.939309666406198,
       zoom: 10,

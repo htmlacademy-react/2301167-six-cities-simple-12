@@ -6,6 +6,9 @@ import App from './components/app/app';
 import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { LOCATIONS_LIST } from './const';
+import { fetchOffersActions } from './store/api-action';
+
+store.dispatch(fetchOffersActions());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

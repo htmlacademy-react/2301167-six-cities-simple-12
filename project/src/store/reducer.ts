@@ -4,6 +4,7 @@ import {
   sortingOffers,
   loadOffers,
   requireAuthorization,
+  setOffersLoadingStatus,
 } from './action';
 import { createReducer } from '@reduxjs/toolkit';
 // import { offers } from '../mocks/offers';
@@ -15,6 +16,7 @@ type State = {
   city: string;
   optionSorting: string;
   offersOfCurrentCity: Offers;
+  isOffersLoading: boolean;
   authorizationStatus: string;
 };
 
@@ -27,6 +29,7 @@ const initialState: State = {
   city: initialCity,
   optionSorting: initialSorting,
   offersOfCurrentCity: initialOffers,
+  isOffersLoading: false,
   authorizationStatus: AuthorizationStatus.Unknown,
 };
 
@@ -45,6 +48,9 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadOffers, (state, action) => {
       state.offersOfCurrentCity = action.payload;
+    })
+    .addCase(setOffersLoadingStatus, (state, action) => {
+      state.isOffersLoading = action.payload;
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;

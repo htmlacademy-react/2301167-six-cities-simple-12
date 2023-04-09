@@ -9,6 +9,8 @@ import LoginPage from '../../pages/login-page/login-page';
 import PropertyPage from '../../pages/property-page/property-page';
 import Page404 from '../../pages/Page-404/Page404';
 import PrivateRoute from '../private-route/private-route';
+import { useAppSelector } from '../../hooks';
+import LoadingPage from '../../pages/loading-page/loading-page';
 
 type AppProps = {
   offers: Offers;
@@ -23,6 +25,12 @@ export default function App({
   city,
   locations,
 }: AppProps): JSX.Element {
+  const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
+
+  if (isOffersLoading) {
+    return <LoadingPage />;
+  }
+
   return (
     <HelmetProvider>
       <BrowserRouter>

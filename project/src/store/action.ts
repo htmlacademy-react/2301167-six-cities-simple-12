@@ -10,6 +10,10 @@ export const completionListOffrs = createAction('main/completionListOffrs');
 
 export const loadOffers = createAction<Offers>('data/loadOffers');
 
+export const setOffersLoadingStatus = createAction<boolean>(
+  'data/setOffersLoadingStatus'
+);
+
 export const requireAuthorization = createAction<AuthorizationStatus>(
   'user/requireAuthorization'
 );
