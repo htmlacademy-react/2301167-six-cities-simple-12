@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
-
 import { Reviews } from '../../types/review-type';
 import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
@@ -14,21 +13,18 @@ import LoadingPage from '../../pages/loading-page/loading-page';
 
 type AppProps = {
   reviews: Reviews;
-
   locations: string[];
 };
 
-export default function App({
-  reviews,
-
-  locations,
-}: AppProps): JSX.Element {
+export default function App({ reviews, locations }: AppProps): JSX.Element {
+  const authorizationStatus = useAppSelector(
+    (state) => state.authorizationStatus
+  );
   const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
 
-  if (isOffersLoading) {
+  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersLoading) {
     return <LoadingPage />;
   }
-
   return (
     <HelmetProvider>
       <BrowserRouter>
@@ -38,7 +34,7 @@ export default function App({
             <Route
               path={AppRoute.Login}
               element={
-                <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <PrivateRoute authorizationStatus={authorizationStatus}>
                   <LoginPage />
                 </PrivateRoute>
               }
