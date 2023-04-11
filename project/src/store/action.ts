@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { Offers } from '../types/offers-type';
 import { AuthorizationStatus } from '../const';
+import { UserData } from '../types/user-data-type';
 
 export const switchCity = createAction<string>('main/switchCity');
 
@@ -19,3 +20,5 @@ export const requireAuthorization = createAction<AuthorizationStatus>(
 );
 
 export const setError = createAction<string | null>('data/setError');
+
+export const setUserData = createAction<UserData | null>('user/setUserData');

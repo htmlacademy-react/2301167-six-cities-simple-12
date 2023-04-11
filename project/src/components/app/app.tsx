@@ -29,16 +29,16 @@ export default function App({ reviews, locations }: AppProps): JSX.Element {
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
+          <Route
+            path={AppRoute.Login}
+            element={
+              <PrivateRoute authorizationStatus={authorizationStatus}>
+                <LoginPage />
+              </PrivateRoute>
+            }
+          />
           <Route path={AppRoute.Main} element={<Layout />}>
             <Route index element={<MainPage locations={locations} />} />
-            <Route
-              path={AppRoute.Login}
-              element={
-                <PrivateRoute authorizationStatus={authorizationStatus}>
-                  <LoginPage />
-                </PrivateRoute>
-              }
-            />
             <Route
               path={AppRoute.Room}
               element={<PropertyPage reviews={reviews} />}
