@@ -19,6 +19,4 @@ export const requireAuthorization = createAction<AuthorizationStatus>(
   'user/requireAuthorization'
 );
 
-export const setError = createAction<string | null>('data/setError');
-
 export const setUserData = createAction<UserData | null>('user/setUserData');
