@@ -1,6 +1,8 @@
 import { Reviews } from '../../types/review-type';
 import ItemReview from '../item-review/item-review';
 import FormRewiew from '../form-review/form-review';
+import { useAppSelector } from '../../hooks';
+import { AuthorizationStatus } from '../../const';
 
 type UsersReviewsProps = {
   reviews: Reviews;
@@ -9,6 +11,8 @@ type UsersReviewsProps = {
 export default function UsersReviews({
   reviews,
 }: UsersReviewsProps): JSX.Element {
+  const authStatus = useAppSelector((state) => state.authorizationStatus);
+
   // const { rating } = offer;
   return (
     <section className='property__reviews reviews'>
@@ -23,7 +27,7 @@ export default function UsersReviews({
         ))}
       </ul>
 
-      <FormRewiew />
+      {authStatus === AuthorizationStatus.Auth && <FormRewiew />}
     </section>
   );
 }

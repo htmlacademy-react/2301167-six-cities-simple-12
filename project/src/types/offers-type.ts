@@ -33,3 +33,7 @@ export type Location = {
   longitude: number;
   zoom: number;
 };
+
+export type OfferId = {
+  id: number;
+};

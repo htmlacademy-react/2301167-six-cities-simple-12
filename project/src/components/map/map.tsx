@@ -50,7 +50,7 @@ export default function Map({ offers, activeOffer }: MapProps): JSX.Element {
   return (
     <section
       className='cities__map map'
-      style={{ width: '100%', minHeight: '823px' }}
+      style={{ width: '100%', height: '100%' }}
       ref={mapRef}
     />
   );
