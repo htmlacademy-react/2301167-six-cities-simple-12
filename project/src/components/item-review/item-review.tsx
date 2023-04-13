@@ -8,6 +8,12 @@ type ItemReviewProps = {
 export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
   const { user, rating, comment, date } = review;
 
+  const reviewDate = new Date(date);
+  const prepareDate = reviewDate.toLocaleString('en-En', {
+    month: 'long',
+    year: 'numeric',
+  });
+
   return (
     <li className='reviews__item'>
       <div className='reviews__user user'>
@@ -30,8 +36,8 @@ export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
           </div>
         </div>
         <p className='reviews__text'>{comment}</p>
-        <time className='reviews__time' dateTime='2019-04-24'>
-          {date}
+        <time className='reviews__time' dateTime={prepareDate}>
+          {prepareDate}
         </time>
       </div>
     </li>
