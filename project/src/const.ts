@@ -45,4 +45,8 @@ export enum APIRoute {
   Offers = '/hotels',
   Login = '/login',
   Logout = '/logout',
+  Comments = '/comments',
 }
+
+export const MIN_CHARACTER_COMMENT = 50;
+export const MAX_CHARACTER_COMMENT = 300;

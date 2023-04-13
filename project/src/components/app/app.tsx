@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
-import { Reviews } from '../../types/review-type';
 import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
@@ -12,11 +11,10 @@ import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/loading-page/loading-page';
 
 type AppProps = {
-  reviews: Reviews;
   locations: string[];
 };
 
-export default function App({ reviews, locations }: AppProps): JSX.Element {
+export default function App({ locations }: AppProps): JSX.Element {
   const authorizationStatus = useAppSelector(
     (state) => state.authorizationStatus
   );
@@ -39,10 +37,7 @@ export default function App({ reviews, locations }: AppProps): JSX.Element {
           />
           <Route path={AppRoute.Main} element={<Layout />}>
             <Route index element={<MainPage locations={locations} />} />
-            <Route
-              path={AppRoute.Room}
-              element={<PropertyPage reviews={reviews} />}
-            />
+            <Route path={AppRoute.Room} element={<PropertyPage />} />
             <Route path='*' element={<Page404 />} />
           </Route>
         </Routes>

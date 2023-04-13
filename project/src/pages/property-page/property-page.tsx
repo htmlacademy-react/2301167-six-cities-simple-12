@@ -4,30 +4,38 @@ import Page404 from '../Page-404/Page404';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import { Offer } from '../../types/offers-type';
-import { Reviews } from '../../types/review-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
 import UsersReviews from '../../components/users-reviews/users-reviews';
-import { useState } from 'react';
-import { useAppSelector } from '../../hooks';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import {
+  fetchNearOffersAction,
+  fetchOfferAction,
+  fetchReviewsAction,
+} from '../../store/api-action';
+import LoadingPage from '../loading-page/loading-page';
 
-type PropertyPageProps = {
-  reviews: Reviews;
-};
+export default function PropertyPage(): JSX.Element {
+  const dispatch = useAppDispatch();
 
-export default function PropertyPage({
-  reviews,
-}: PropertyPageProps): JSX.Element {
+  const { id } = useParams() as { id: string };
+  const hotelId = Number(id);
+
+  useEffect(() => {
+    dispatch(fetchOfferAction({ id: hotelId }));
+    dispatch(fetchNearOffersAction({ id: hotelId }));
+    dispatch(fetchReviewsAction({ id: hotelId }));
+  }, [dispatch, hotelId]);
+
+  const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
+  const offer = useAppSelector((state) => state.offer);
+  const nearOffers = useAppSelector((state) => state.nearOffers);
+
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
 
-  const { id } = useParams<string>();
-
-  const offers = useAppSelector((state) => state.offersOfCurrentCity);
-
-  const filteredOffers = offers.filter((offer) => offer.id !== Number(id));
-
-  const offer = offers.find((room) => room.id === Number(id)) as Offer;
-
-  if (!offer) {
+  if (isOffersLoading && !offer) {
+    return <LoadingPage />;
+  } else if (!offer) {
     return <Page404 />;
   }
 
@@ -127,11 +135,11 @@ export default function PropertyPage({
                   <p className='property__text'>{description}</p>
                 </div>
               </div>
-              <UsersReviews reviews={reviews} />
+              <UsersReviews />
             </div>
           </div>
           <section className='property__map map'>
-            <Map offers={filteredOffers} activeOffer={activeOffer} />
+            <Map offers={nearOffers} activeOffer={activeOffer} />
           </section>
         </section>
         <div className='container'>
@@ -140,7 +148,7 @@ export default function PropertyPage({
               Other places in the neighbourhood
             </h2>
             <NearPlacesList
-              offers={filteredOffers}
+              offers={nearOffers}
               onMouseEnterHandler={(offerItem) => setActiveOffer(offerItem)}
             />
           </section>
