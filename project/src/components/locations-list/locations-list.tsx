@@ -41,5 +41,3 @@ export default function LocationsList({
     </section>
   );
 }
-
-// className='locations__item-link tabs__item tabs__item--active'

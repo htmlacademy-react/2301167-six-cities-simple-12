@@ -20,7 +20,7 @@ export default function UsersReviews(): JSX.Element {
     if (isErrorLoading) {
       toast.warning('Failed to load comments, please refresh the page.');
     }
-  }, []);
+  }, [isErrorLoading]);
 
   return (
     <section className='property__reviews reviews'>

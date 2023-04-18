@@ -5,7 +5,7 @@
 // };
 
 export type UserData = {
-  avatarUrl: String;
+  avatarUrl: string;
   email: string;
   id: number;
   isPro: boolean;

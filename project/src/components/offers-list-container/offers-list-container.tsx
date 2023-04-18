@@ -21,7 +21,7 @@ export default function OffersListContainer(): JSX.Element {
     if (isErrorLoading) {
       toast.warning('Failed to load offers, please refresh the page.');
     }
-  }, [relevantOffers]);
+  }, [relevantOffers, isErrorLoading]);
 
   return (
     <div className='cities__places-container container'>
