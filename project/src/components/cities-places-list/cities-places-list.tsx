@@ -2,6 +2,7 @@ import PlaceCard from '../place-card/place-card';
 import { Offer, Offers } from '../../types/offers-type';
 import { getSortingBy } from '../../general';
 import { useAppSelector } from '../../hooks';
+import { getOptionSorting } from '../../store/app-process/app-process.selectors';
 
 type CitiesPlacesListProps = {
   offers: Offers;
@@ -12,7 +13,7 @@ export default function CitiesPlacesList({
   offers,
   onMouseEnterHandler,
 }: CitiesPlacesListProps): JSX.Element {
-  const currentOption = useAppSelector((state) => state.optionSorting);
+  const currentOption = useAppSelector(getOptionSorting);
 
   const sortingOffers = getSortingBy(offers, currentOption) as Offers;
 

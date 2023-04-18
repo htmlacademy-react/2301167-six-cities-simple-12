@@ -1,11 +1,12 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { OPTIONS_SORTING } from '../../const';
-import { sortingOffers } from '../../store/action';
+import { sortingOffers } from '../../store/app-process/app-process.slice';
+import { getOptionSorting } from '../../store/app-process/app-process.selectors';
 
 export default function PlacesSorting(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const currentOption = useAppSelector((state) => state.optionSorting);
+  const currentOption = useAppSelector(getOptionSorting);
 
   return (
     <form className='places__sorting' action='#' method='get'>

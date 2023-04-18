@@ -14,6 +14,11 @@ import {
   fetchReviewsAction,
 } from '../../store/api-action';
 import LoadingPage from '../loading-page/loading-page';
+import {
+  getNearOffers,
+  getOffer,
+  getOffersDataLoadingStatus,
+} from '../../store/app-data/app-data.selectors';
 
 export default function PropertyPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -27,9 +32,9 @@ export default function PropertyPage(): JSX.Element {
     dispatch(fetchReviewsAction({ id: hotelId }));
   }, [dispatch, hotelId]);
 
-  const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
-  const offer = useAppSelector((state) => state.offer);
-  const nearOffers = useAppSelector((state) => state.nearOffers);
+  const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
+  const offer = useAppSelector(getOffer);
+  const nearOffers = useAppSelector(getNearOffers);
 
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
 

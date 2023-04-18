@@ -9,16 +9,16 @@ import Page404 from '../../pages/Page-404/Page404';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/loading-page/loading-page';
+import { getAuthorizationStatus } from '../../store/user-process/user-process.selectors';
+import { getOffersDataLoadingStatus } from '../../store/app-data/app-data.selectors';
 
 type AppProps = {
   locations: string[];
 };
 
 export default function App({ locations }: AppProps): JSX.Element {
-  const authorizationStatus = useAppSelector(
-    (state) => state.authorizationStatus
-  );
-  const isOffersLoading = useAppSelector((state) => state.isOffersLoading);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
 
   if (authorizationStatus === AuthorizationStatus.Unknown || isOffersLoading) {
     return <LoadingPage />;

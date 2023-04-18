@@ -4,11 +4,12 @@ import CitiesPlacesList from '../cities-places-list/cities-places-list';
 import Map from '../map/map';
 import { Offer } from '../../types/offers-type';
 import { useAppSelector } from '../../hooks';
+import { getOffersOfCurrentCity } from '../../store/app-data/app-data.selectors';
 
 export default function OffersListContainer(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
 
-  const relevantOffers = useAppSelector((state) => state.offersOfCurrentCity);
+  const relevantOffers = useAppSelector(getOffersOfCurrentCity);
 
   return (
     <div className='cities__places-container container'>
