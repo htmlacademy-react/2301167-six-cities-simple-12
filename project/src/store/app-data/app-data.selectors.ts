@@ -11,3 +11,5 @@ export const getOffersDataLoadingStatus = (state: State): boolean =>
   state[NameSpace.Data].isOffersLoading;
 export const getNearOffers = (state: State): Offers =>
   state[NameSpace.Data].nearOffers;
+export const getErrorOffersStatus = (state: State): boolean =>
+  state[NameSpace.Data].hasErrorOffers;

@@ -20,8 +20,10 @@ export type AppData = {
   isOffersLoading: boolean;
   nearOffers: Offers;
   city: string; //////
+  hasErrorOffers: boolean;
 };
 
 export type ReviewData = {
   reviews: Reviews;
+  hasErrorReview: boolean;
 };

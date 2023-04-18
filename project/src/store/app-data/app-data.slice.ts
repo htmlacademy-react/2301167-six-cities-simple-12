@@ -15,6 +15,7 @@ const initialState: AppData = {
   isOffersLoading: false,
   nearOffers: [],
   city: city, //////
+  hasErrorOffers: false,
 };
 
 export const appData = createSlice({
@@ -31,6 +32,7 @@ export const appData = createSlice({
     builder
       .addCase(fetchOffersAction.pending, (state) => {
         state.isOffersLoading = true;
+        state.hasErrorOffers = false;
       })
       .addCase(fetchOffersAction.fulfilled, (state, action) => {
         state.offers = action.payload;
@@ -41,12 +43,22 @@ export const appData = createSlice({
       })
       .addCase(fetchOffersAction.rejected, (state) => {
         state.isOffersLoading = false;
+        state.hasErrorOffers = true;
+      })
+      .addCase(fetchOfferAction.pending, (state) => {
+        state.hasErrorOffers = false;
       })
       .addCase(fetchOfferAction.fulfilled, (state, action) => {
         state.offer = action.payload;
       })
+      .addCase(fetchOfferAction.rejected, (state) => {
+        state.hasErrorOffers = true;
+      })
       .addCase(fetchNearOffersAction.fulfilled, (state, action) => {
         state.nearOffers = action.payload;
+      })
+      .addCase(fetchNearOffersAction.rejected, (state) => {
+        state.hasErrorOffers = true;
       });
   },
 });
