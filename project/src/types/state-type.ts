@@ -14,12 +14,10 @@ export type AppProcess = {
 };
 
 export type AppData = {
-  offersOfCurrentCity: Offers;
   offers: Offers;
   offer: Offer | null;
   isOffersLoading: boolean;
   nearOffers: Offers;
-  city: string; //////
   hasErrorOffers: boolean;
 };
 

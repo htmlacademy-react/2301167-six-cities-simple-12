@@ -5,7 +5,7 @@ import { Offers, Offer } from '../../types/offers-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
 import { useAppSelector } from '../../hooks';
-import { getOffersOfCurrentCity } from '../../store/app-data/app-data.selectors';
+import { getOffers } from '../../store/app-data/app-data.selectors';
 
 type MapProps = {
   offers: Offers;
@@ -24,7 +24,7 @@ const currentCustomIcon = new Icon({
 });
 
 export default function Map({ offers, activeOffer }: MapProps): JSX.Element {
-  const { city } = useAppSelector(getOffersOfCurrentCity)[0];
+  const { city } = useAppSelector(getOffers)[0];
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
@@ -39,12 +39,12 @@ export default function Map({ offers, activeOffer }: MapProps): JSX.Element {
 
         marker
           .setIcon(
-            activeOffer !== undefined && offer.id === activeOffer.id
-              ? currentCustomIcon
-              : defaultCustomIcon
+            offer.id === activeOffer?.id ? currentCustomIcon : defaultCustomIcon
           )
           .addTo(map);
       });
+
+      map.invalidateSize();
     }
   }, [map, offers, activeOffer]);
 
