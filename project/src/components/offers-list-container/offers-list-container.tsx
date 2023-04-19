@@ -10,6 +10,7 @@ import {
 } from '../../store/app-data/app-data.selectors';
 // import { toast } from 'react-toastify';
 import { getCurrentCity } from '../../store/app-process/app-process.selectors';
+import MainEmpty from '../main-empty/main-empty';
 
 const getOffersOfcity = (offers: Offers, city: string) =>
   offers.filter((offer) => offer.city.name === city);
@@ -32,6 +33,9 @@ export default function OffersListContainer(): JSX.Element {
   //     toast.warning('Failed to load offers, please refresh the page.');
   //   }
   // }, [relevantOffers, isErrorLoading]);
+  if (!relevantOffers.length) {
+    return <MainEmpty city={city} />;
+  }
 
   return (
     <div className='cities__places-container container'>
