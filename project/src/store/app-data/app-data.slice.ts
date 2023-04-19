@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../../types/state-type';
 import { NameSpace } from '../../const';
-import { city } from '../app-process/app-process.slice'; //////
 import {
   fetchNearOffersAction,
   fetchOfferAction,
@@ -9,25 +8,17 @@ import {
 } from '../api-action';
 
 const initialState: AppData = {
-  offersOfCurrentCity: [],
   offers: [],
   offer: null,
   isOffersLoading: false,
   nearOffers: [],
-  city: city, //////
   hasErrorOffers: false,
 };
 
 export const appData = createSlice({
   name: NameSpace.Data,
   initialState,
-  reducers: {
-    completionListOffrs: (state) => {
-      state.offersOfCurrentCity = state.offers.filter(
-        (offer) => offer.city.name === state.city
-      );
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchOffersAction.pending, (state) => {
@@ -37,9 +28,6 @@ export const appData = createSlice({
       .addCase(fetchOffersAction.fulfilled, (state, action) => {
         state.offers = action.payload;
         state.isOffersLoading = false;
-        state.offersOfCurrentCity = state.offers.filter(
-          (offer) => offer.city.name === state.city
-        );
       })
       .addCase(fetchOffersAction.rejected, (state) => {
         state.isOffersLoading = false;
@@ -63,4 +51,4 @@ export const appData = createSlice({
   },
 });
 
-export const { completionListOffrs } = appData.actions;
+// export const { completionListOffrs } = appData.actions;
