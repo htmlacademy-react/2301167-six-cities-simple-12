@@ -2,10 +2,25 @@ import ItemReview from '../item-review/item-review';
 import FormRewiew from '../form-review/form-review';
 import { useAppSelector } from '../../hooks';
 import { AuthorizationStatus } from '../../const';
+import { getAuthorizationStatus } from '../../store/user-process/user-process.selectors';
+import {
+  getErrorReviewStatus,
+  getReviews,
+} from '../../store/review-data/review-data.selectors';
+import { toast } from 'react-toastify';
+import { useEffect } from 'react';
 
 export default function UsersReviews(): JSX.Element {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
-  const reviews = useAppSelector((state) => state.reviews);
+  const authStatus = useAppSelector(getAuthorizationStatus);
+  const reviews = useAppSelector(getReviews);
+
+  const isErrorLoading = useAppSelector(getErrorReviewStatus);
+
+  useEffect(() => {
+    if (isErrorLoading) {
+      toast.warning('Failed to load comments, please refresh the page.');
+    }
+  }, [isErrorLoading]);
 
   return (
     <section className='property__reviews reviews'>

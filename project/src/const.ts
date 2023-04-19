@@ -10,8 +10,6 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-// export const ZERO_ID = 0;
-
 export const MAX_RATING = 5;
 export const MULTIPLIER_FOR_RATING = 100 / MAX_RATING;
 
@@ -50,3 +48,10 @@ export enum APIRoute {
 
 export const MIN_CHARACTER_COMMENT = 50;
 export const MAX_CHARACTER_COMMENT = 300;
+
+export enum NameSpace {
+  App = 'APP',
+  Data = 'DATA',
+  User = 'USER',
+  Comment = 'COMMENT',
+}

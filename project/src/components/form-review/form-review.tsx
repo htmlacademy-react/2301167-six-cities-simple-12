@@ -22,7 +22,10 @@ export default function FormRewiew(): JSX.Element {
   const { id } = useParams();
   const hotelId = Number(id);
 
-  useEffect(() => setFormData({ ...formData, hotelId: hotelId }), [hotelId]);
+  useEffect(
+    () => setFormData({ ...formData, hotelId: hotelId }),
+    [hotelId, formData]
+  );
 
   useEffect(() => {
     const isDisable = !(

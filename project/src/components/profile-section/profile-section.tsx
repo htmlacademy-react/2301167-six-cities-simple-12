@@ -2,12 +2,16 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AuthorizationStatus } from '../../const';
 import { logoutAction } from '../../store/api-action';
+import {
+  getAuthorizationStatus,
+  getUserData,
+} from '../../store/user-process/user-process.selectors';
 
 export default function ProfileSection(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
-  const userName = useAppSelector((state) => state.userData?.email);
+  const authStatus = useAppSelector(getAuthorizationStatus);
+  const userName = useAppSelector(getUserData);
 
   if (authStatus === AuthorizationStatus.Auth) {
     return (
@@ -16,7 +20,9 @@ export default function ProfileSection(): JSX.Element {
           <li className='header__nav-item user'>
             <div className='header__nav-profile'>
               <div className='header__avatar-wrapper user__avatar-wrapper'></div>
-              <span className='header__user-name user__name'>{userName}</span>
+              <span className='header__user-name user__name'>
+                {userName?.email}
+              </span>
             </div>
           </li>
           <li className='header__nav-item'>
