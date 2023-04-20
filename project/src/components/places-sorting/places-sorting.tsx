@@ -21,7 +21,10 @@ export default function PlacesSorting(): JSX.Element {
       style={{ display: 'flex' }}
     >
       <span className='places__sorting-caption'>Sort by </span>
-      <span className='places__sorting-type' onClick={() => setOpened(true)}>
+      <span
+        className='places__sorting-type'
+        onClick={() => setOpened(!isOpened)}
+      >
         &nbsp;{currentOption}
         <svg className='places__sorting-arrow' width='7' height='4'>
           <use xlinkHref='#icon-arrow-select'></use>
