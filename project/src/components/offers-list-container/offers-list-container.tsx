@@ -51,7 +51,11 @@ export default function OffersListContainer(): JSX.Element {
         />
       </section>
       <div className='cities__right-section'>
-        <Map offers={relevantOffers} activeOffer={activeOffer} />
+        <Map
+          offers={relevantOffers}
+          activeOffer={activeOffer}
+          className={'cities'}
+        />
       </div>
     </div>
   );

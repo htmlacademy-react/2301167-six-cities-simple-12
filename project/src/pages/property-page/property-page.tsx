@@ -144,7 +144,11 @@ export default function PropertyPage(): JSX.Element {
             </div>
           </div>
           <section className='property__map map'>
-            <Map offers={nearOffers} activeOffer={activeOffer} />
+            <Map
+              offers={nearOffers}
+              activeOffer={activeOffer}
+              className={'property'}
+            />
           </section>
         </section>
         <div className='container'>

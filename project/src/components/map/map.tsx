@@ -10,6 +10,7 @@ import { getOffers } from '../../store/app-data/app-data.selectors';
 type MapProps = {
   offers: Offers;
   activeOffer: Offer | undefined;
+  className: string;
 };
 
 const defaultCustomIcon = new Icon({
@@ -23,7 +24,11 @@ const currentCustomIcon = new Icon({
   iconAnchor: [20, 40],
 });
 
-export default function Map({ offers, activeOffer }: MapProps): JSX.Element {
+export default function Map({
+  offers,
+  activeOffer,
+  className,
+}: MapProps): JSX.Element {
   const { city } = useAppSelector(getOffers)[0];
 
   const mapRef = useRef(null);
@@ -43,16 +48,9 @@ export default function Map({ offers, activeOffer }: MapProps): JSX.Element {
           )
           .addTo(map);
       });
-
-      map.invalidateSize();
+      // map.invalidateSize();
     }
   }, [map, offers, activeOffer]);
 
-  return (
-    <section
-      className='cities__map map'
-      style={{ width: '100%', height: '100%' }}
-      ref={mapRef}
-    />
-  );
+  return <section className={`${className}__map map`} ref={mapRef} />;
 }
