@@ -50,5 +50,3 @@ export const appData = createSlice({
       });
   },
 });
-
-// export const { completionListOffrs } = appData.actions;

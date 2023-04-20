@@ -21,4 +21,3 @@ export const appProcess = createSlice({
 });
 
 export const { switchCity, sortingOffers } = appProcess.actions;
-export const { city } = initialState;
