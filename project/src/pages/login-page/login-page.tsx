@@ -1,16 +1,20 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { FormEvent, useRef } from 'react';
+import React, { FormEvent, useRef } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { AuthData } from '../../types/auth-data-type';
 import { loginAction } from '../../store/api-action';
 import Logo from '../../components/logo/logo';
+import { switchCity } from '../../store/app-process/app-process.slice';
+import { LOCATIONS_LIST } from '../../const';
+import { AppRoute } from '../../const';
 
 export default function LoginPage() {
   const loginRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
@@ -34,6 +38,15 @@ export default function LoginPage() {
     return regex.test(password);
   };
 
+  const getRandomCity =
+    LOCATIONS_LIST[Math.floor(Math.random() * LOCATIONS_LIST.length)];
+  const handleRedirectToCity = (evt: React.MouseEvent<HTMLAnchorElement>) => {
+    evt.preventDefault();
+
+    dispatch(switchCity(getRandomCity));
+    navigate(AppRoute.Main);
+  };
+
   return (
     <>
       <Helmet>
@@ -51,7 +64,9 @@ export default function LoginPage() {
       <main className='page__main page__main--login'>
         <div className='page__login-container container'>
           <section className='login'>
-            <h1 className='login__title'>Sign in</h1>
+            <h1 className='login__title' style={{ display: 'flex' }}>
+              Sign in
+            </h1>
             <form
               className='login__form form'
               action='#'
@@ -90,8 +105,12 @@ export default function LoginPage() {
           </section>
           <section className='locations locations--login locations--current'>
             <div className='locations__item'>
-              <Link className='locations__item-link' to='#'>
-                <span>Amsterdam</span>
+              <Link
+                className='locations__item-link'
+                to='#'
+                onClick={(evt) => handleRedirectToCity(evt)}
+              >
+                <span>{getRandomCity}</span>
               </Link>
             </div>
           </section>
