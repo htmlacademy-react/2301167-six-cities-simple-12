@@ -14,6 +14,8 @@ import MainEmpty from '../main-empty/main-empty';
 
 const getOffersOfcity = (offers: Offers, city: string) =>
   offers.filter((offer) => offer.city.name === city);
+const getCityForMap = (offers: Offers) => offers[0].city;
+
 export default function OffersListContainer(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
   const [relevantOffers, setRelevantOffers] = useState<Offers>([]);
@@ -52,6 +54,7 @@ export default function OffersListContainer(): JSX.Element {
       </section>
       <div className='cities__right-section'>
         <Map
+          city={getCityForMap(relevantOffers)}
           offers={relevantOffers}
           activeOffer={activeOffer}
           className={'cities'}

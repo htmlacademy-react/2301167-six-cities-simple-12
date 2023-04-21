@@ -53,6 +53,7 @@ export default function PropertyPage(): JSX.Element {
     goods,
     host,
     description,
+    city,
   } = offer;
 
   return (
@@ -146,6 +147,7 @@ export default function PropertyPage(): JSX.Element {
           </div>
           <section className='property__map map'>
             <Map
+              city={city}
               offers={[...nearOffers, offer]}
               activeOffer={offer}
               className={'property'}
