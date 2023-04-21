@@ -87,7 +87,11 @@ export default function PropertyPage(): JSX.Element {
               </div>
               <div className='property__rating rating'>
                 <div className='property__stars rating__stars'>
-                  <span style={{ width: `${getStarsOfRating(rating)}%` }} />
+                  <span
+                    style={{
+                      width: `${getStarsOfRating(Math.round(rating))}%`,
+                    }}
+                  />
                   <span className='visually-hidden'>Rating</span>
                 </div>
                 <span className='property__rating-value rating__value'>
