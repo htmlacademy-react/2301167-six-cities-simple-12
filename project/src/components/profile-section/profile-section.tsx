@@ -34,7 +34,7 @@ export default function ProfileSection(): JSX.Element {
                 dispatch(logoutAction());
               }}
             >
-              <span className='header__signout'>Sign out</span>
+              <span className='header__signout'>Log Out</span>
             </Link>
           </li>
         </ul>
@@ -50,7 +50,7 @@ export default function ProfileSection(): JSX.Element {
               to='/login'
             >
               <div className='header__avatar-wrapper user__avatar-wrapper'></div>
-              <span className='header__login'>Sign in</span>
+              <span className='header__login'>Login</span>
             </Link>
           </li>
         </ul>
