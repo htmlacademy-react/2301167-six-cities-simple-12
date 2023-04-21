@@ -11,6 +11,7 @@ import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/loading-page/loading-page';
 import { getAuthorizationStatus } from '../../store/user-process/user-process.selectors';
 import { getOffersDataLoadingStatus } from '../../store/app-data/app-data.selectors';
+import ScrollToTop from '../scroll-to-top/scroll-to-top';
 
 type AppProps = {
   locations: string[];
@@ -26,6 +27,7 @@ export default function App({ locations }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route
             path={AppRoute.Login}

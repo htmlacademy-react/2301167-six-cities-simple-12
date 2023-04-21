@@ -11,8 +11,11 @@ const initialState: AppData = {
   offers: [],
   offer: null,
   isOffersLoading: false,
+  isOfferLoading: false,
   nearOffers: [],
   hasErrorOffers: false,
+  hasErrorOffer: false,
+  hasErrorNearOffers: false,
 };
 
 export const appData = createSlice({
@@ -34,21 +37,25 @@ export const appData = createSlice({
         state.hasErrorOffers = true;
       })
       .addCase(fetchOfferAction.pending, (state) => {
-        state.hasErrorOffers = false;
+        state.isOfferLoading = true;
+        state.hasErrorOffer = false;
       })
       .addCase(fetchOfferAction.fulfilled, (state, action) => {
         state.offer = action.payload;
+        state.isOfferLoading = false;
       })
       .addCase(fetchOfferAction.rejected, (state) => {
-        state.hasErrorOffers = true;
+        state.hasErrorOffer = true;
+        state.isOfferLoading = false;
+      })
+      .addCase(fetchNearOffersAction.pending, (state) => {
+        state.hasErrorNearOffers = false;
       })
       .addCase(fetchNearOffersAction.fulfilled, (state, action) => {
         state.nearOffers = action.payload;
       })
       .addCase(fetchNearOffersAction.rejected, (state) => {
-        state.hasErrorOffers = true;
+        state.hasErrorNearOffers = true;
       });
   },
 });
-
-// export const { completionListOffrs } = appData.actions;

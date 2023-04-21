@@ -9,10 +9,15 @@ import {
 } from '../../store/review-data/review-data.selectors';
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
+import { Reviews } from '../../types/review-type';
+
+const getNewReviews = (reviews: Reviews) => [...reviews].reverse().slice(0, 10);
 
 export default function UsersReviews(): JSX.Element {
   const authStatus = useAppSelector(getAuthorizationStatus);
   const reviews = useAppSelector(getReviews);
+
+  const newReviews = getNewReviews(reviews);
 
   const isErrorLoading = useAppSelector(getErrorReviewStatus);
 
@@ -30,7 +35,7 @@ export default function UsersReviews(): JSX.Element {
       </h2>
 
       <ul className='reviews__list'>
-        {reviews.map((review) => (
+        {newReviews.map((review) => (
           <ItemReview review={review} key={review.id} />
         ))}
       </ul>

@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import Page404 from '../Page-404/Page404';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import { Offer } from '../../types/offers-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
 import UsersReviews from '../../components/users-reviews/users-reviews';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import {
   fetchNearOffersAction,
@@ -15,9 +14,9 @@ import {
 } from '../../store/api-action';
 import LoadingPage from '../loading-page/loading-page';
 import {
+  getErrorOfferStatus,
   getNearOffers,
   getOffer,
-  getOffersDataLoadingStatus,
 } from '../../store/app-data/app-data.selectors';
 
 export default function PropertyPage(): JSX.Element {
@@ -32,16 +31,16 @@ export default function PropertyPage(): JSX.Element {
     dispatch(fetchReviewsAction({ id: hotelId }));
   }, [dispatch, hotelId]);
 
-  const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
+  const hasErrorOffer = useAppSelector(getErrorOfferStatus);
   const offer = useAppSelector(getOffer);
   const nearOffers = useAppSelector(getNearOffers);
 
-  const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
-
-  if (isOffersLoading && !offer) {
-    return <LoadingPage />;
-  } else if (!offer) {
+  if (hasErrorOffer) {
     return <Page404 />;
+  }
+
+  if (!offer) {
+    return <LoadingPage />;
   }
 
   const {
@@ -56,6 +55,7 @@ export default function PropertyPage(): JSX.Element {
     goods,
     host,
     description,
+    city,
   } = offer;
 
   return (
@@ -68,7 +68,7 @@ export default function PropertyPage(): JSX.Element {
         <section className='property'>
           <div className='property__gallery-container container'>
             <div className='property__gallery'>
-              {images.map((image) => (
+              {images.slice(0, 6).map((image) => (
                 <div className='property__image-wrapper' key={image}>
                   <img className='property__image' src={image} alt='' />
                 </div>
@@ -87,7 +87,11 @@ export default function PropertyPage(): JSX.Element {
               </div>
               <div className='property__rating rating'>
                 <div className='property__stars rating__stars'>
-                  <span style={{ width: `${getStarsOfRating(rating)}%` }} />
+                  <span
+                    style={{
+                      width: `${getStarsOfRating(Math.round(rating))}%`,
+                    }}
+                  />
                   <span className='visually-hidden'>Rating</span>
                 </div>
                 <span className='property__rating-value rating__value'>
@@ -144,7 +148,12 @@ export default function PropertyPage(): JSX.Element {
             </div>
           </div>
           <section className='property__map map'>
-            <Map offers={nearOffers} activeOffer={activeOffer} />
+            <Map
+              city={city}
+              offers={[...nearOffers, offer]}
+              activeOffer={offer}
+              className={'property'}
+            />
           </section>
         </section>
         <div className='container'>
@@ -152,10 +161,7 @@ export default function PropertyPage(): JSX.Element {
             <h2 className='near-places__title'>
               Other places in the neighbourhood
             </h2>
-            <NearPlacesList
-              offers={nearOffers}
-              onMouseEnterHandler={(offerItem) => setActiveOffer(offerItem)}
-            />
+            <NearPlacesList offers={nearOffers} />
           </section>
         </div>
       </main>

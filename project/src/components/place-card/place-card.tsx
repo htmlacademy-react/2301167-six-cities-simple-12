@@ -11,7 +11,8 @@ export default function PlaceCard({
   offer,
   onMouseEnterHandler,
 }: PlaceCardProps): JSX.Element {
-  const { isPremium, price, rating, title, previewImage, type } = offer;
+  const { isPremium, price, title, previewImage, type } = offer;
+  const rating = Math.round(offer.rating);
 
   return (
     <article
