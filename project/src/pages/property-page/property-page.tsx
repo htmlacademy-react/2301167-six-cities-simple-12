@@ -14,9 +14,9 @@ import {
 } from '../../store/api-action';
 import LoadingPage from '../loading-page/loading-page';
 import {
+  getErrorOfferStatus,
   getNearOffers,
   getOffer,
-  getOffersDataLoadingStatus,
 } from '../../store/app-data/app-data.selectors';
 
 export default function PropertyPage(): JSX.Element {
@@ -31,14 +31,16 @@ export default function PropertyPage(): JSX.Element {
     dispatch(fetchReviewsAction({ id: hotelId }));
   }, [dispatch, hotelId]);
 
-  const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
+  const hasErrorOffer = useAppSelector(getErrorOfferStatus);
   const offer = useAppSelector(getOffer);
   const nearOffers = useAppSelector(getNearOffers);
 
-  if (isOffersLoading && !offer) {
-    return <LoadingPage />;
-  } else if (!offer) {
+  if (hasErrorOffer) {
     return <Page404 />;
+  }
+
+  if (!offer) {
+    return <LoadingPage />;
   }
 
   const {
