@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react';
-import { Icon, Marker } from 'leaflet';
+import { useRef, useEffect, useState } from 'react';
+import { FeatureGroup, Icon, Marker } from 'leaflet';
 import useMap from '../../hooks/useMap';
 import { Offers, Offer } from '../../types/offers-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
@@ -15,12 +15,12 @@ type MapProps = {
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
+  iconSize: [30, 40],
   iconAnchor: [20, 40],
 });
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
+  iconSize: [30, 40],
   iconAnchor: [20, 40],
 });
 
@@ -33,6 +33,7 @@ export default function Map({
 
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
+  const [markersGroup] = useState<FeatureGroup>(new FeatureGroup());
 
   useEffect(() => {
     if (map) {
@@ -42,14 +43,31 @@ export default function Map({
           lng: offer.location.longitude,
         });
 
-        marker
-          .setIcon(
-            offer.id === activeOffer?.id ? currentCustomIcon : defaultCustomIcon
-          )
-          .addTo(map);
+        marker.setIcon(
+          offer.id === activeOffer?.id ? currentCustomIcon : defaultCustomIcon
+        );
+        markersGroup.addLayer(marker);
       });
-      // map.invalidateSize();
+
+      if (activeOffer) {
+        const marker = new Marker({
+          lat: activeOffer.location.latitude,
+          lng: activeOffer.location.longitude,
+        });
+        marker.setIcon(currentCustomIcon);
+        markersGroup.addLayer(marker);
+      }
+
+      markersGroup.addTo(map);
+      map.setView(
+        [city.location.latitude, city.location.longitude],
+        city.location.zoom
+      );
     }
+
+    return () => {
+      markersGroup.clearLayers();
+    };
   }, [map, offers, activeOffer]);
 
   return <section className={`${className}__map map`} ref={mapRef} />;
