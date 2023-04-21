@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 import Page404 from '../Page-404/Page404';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
-import { Offer } from '../../types/offers-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
 import UsersReviews from '../../components/users-reviews/users-reviews';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import {
   fetchNearOffersAction,
@@ -35,8 +34,6 @@ export default function PropertyPage(): JSX.Element {
   const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
   const offer = useAppSelector(getOffer);
   const nearOffers = useAppSelector(getNearOffers);
-
-  const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
 
   if (isOffersLoading && !offer) {
     return <LoadingPage />;
@@ -149,8 +146,8 @@ export default function PropertyPage(): JSX.Element {
           </div>
           <section className='property__map map'>
             <Map
-              offers={nearOffers}
-              activeOffer={activeOffer}
+              offers={[...nearOffers, offer]}
+              activeOffer={offer}
               className={'property'}
             />
           </section>
@@ -160,10 +157,7 @@ export default function PropertyPage(): JSX.Element {
             <h2 className='near-places__title'>
               Other places in the neighbourhood
             </h2>
-            <NearPlacesList
-              offers={nearOffers}
-              onMouseEnterHandler={(offerItem) => setActiveOffer(offerItem)}
-            />
+            <NearPlacesList offers={nearOffers} />
           </section>
         </div>
       </main>
