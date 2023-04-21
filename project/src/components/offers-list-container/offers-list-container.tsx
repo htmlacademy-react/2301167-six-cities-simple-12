@@ -5,12 +5,14 @@ import Map from '../map/map';
 import { Offer, Offers } from '../../types/offers-type';
 import { useAppSelector } from '../../hooks';
 import {
-  // getErrorOffersStatus,
+  getErrorOffersStatus,
   getOffers,
+  getOffersDataLoadingStatus,
 } from '../../store/app-data/app-data.selectors';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { getCurrentCity } from '../../store/app-process/app-process.selectors';
 import MainEmpty from '../main-empty/main-empty';
+import LoadingPage from '../../pages/loading-page/loading-page';
 
 const getOffersOfcity = (offers: Offers, city: string) =>
   offers.filter((offer) => offer.city.name === city);
@@ -23,20 +25,26 @@ export default function OffersListContainer(): JSX.Element {
   const offers = useAppSelector(getOffers);
   const city = useAppSelector(getCurrentCity);
 
-  // const isErrorLoading = useAppSelector(getErrorOffersStatus);
+  const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
+  const isErrorLoading = useAppSelector(getErrorOffersStatus);
+
+  useEffect(() => {
+    if (isErrorLoading) {
+      toast.warning('Failed to load offers, please refresh the page.');
+    }
+  }, [isErrorLoading]);
 
   useEffect(() => {
     const currentOffers = getOffersOfcity(offers, city);
     setRelevantOffers(currentOffers);
   }, [city, offers]);
 
-  // useEffect(() => {
-  //   if (isErrorLoading) {
-  //     toast.warning('Failed to load offers, please refresh the page.');
-  //   }
-  // }, [relevantOffers, isErrorLoading]);
-  if (!relevantOffers.length) {
+  if (!isOffersLoading && !isErrorLoading && !relevantOffers.length) {
     return <MainEmpty city={city} />;
+  }
+
+  if (!relevantOffers) {
+    return <LoadingPage />;
   }
 
   return (
