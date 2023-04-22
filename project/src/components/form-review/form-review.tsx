@@ -66,7 +66,11 @@ export default function FormRewiew(): JSX.Element {
 
   return (
     <form className='reviews__form form' action='' onSubmit={handleSubmit}>
-      <label className='reviews__label form__label' htmlFor='review'>
+      <label
+        className='reviews__label form__label'
+        style={{ display: 'flex' }}
+        htmlFor='review'
+      >
         Your review
       </label>
       <RatingInput
@@ -82,7 +86,7 @@ export default function FormRewiew(): JSX.Element {
         disabled={isInactive}
       />
       <div className='reviews__button-wrapper'>
-        <p className='reviews__help'>
+        <p className='reviews__help' style={{ textAlign: 'left' }}>
           To submit review please make sure to set
           <span className='reviews__star'>rating</span> and describe your stay
           using between{' '}

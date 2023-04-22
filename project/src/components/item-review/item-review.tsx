@@ -35,8 +35,17 @@ export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
             <span className='visually-hidden'>Rating</span>
           </div>
         </div>
-        <p className='reviews__text'>{comment}</p>
-        <time className='reviews__time' dateTime={prepareDate}>
+        <p
+          className='reviews__text'
+          style={{ textAlign: 'left', hyphens: 'auto' }}
+        >
+          {comment}
+        </p>
+        <time
+          className='reviews__time'
+          style={{ display: 'flex' }}
+          dateTime={prepareDate}
+        >
           {prepareDate}
         </time>
       </div>

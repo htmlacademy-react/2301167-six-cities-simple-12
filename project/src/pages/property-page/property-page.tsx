@@ -141,7 +141,12 @@ export default function PropertyPage(): JSX.Element {
                   )}
                 </div>
                 <div className='property__description'>
-                  <p className='property__text'>{description}</p>
+                  <p
+                    className='property__text'
+                    style={{ textAlign: 'left', hyphens: 'auto' }}
+                  >
+                    {description}
+                  </p>
                 </div>
               </div>
               <UsersReviews />
