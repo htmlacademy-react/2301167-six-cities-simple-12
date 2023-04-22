@@ -48,25 +48,27 @@ export default function OffersListContainer(): JSX.Element {
   }
 
   return (
-    <div className='cities__places-container container'>
-      <section className='cities__places places'>
-        <h2 className='visually-hidden'>Places</h2>
-        <b className='places__found'>
-          {relevantOffers.length} places to stay in Amsterdam
-        </b>
-        <PlacesSorting />
-        <CitiesPlacesList
-          offers={relevantOffers}
-          onMouseEnterHandler={(offer) => setActiveOffer(offer)}
-        />
-      </section>
-      <div className='cities__right-section'>
-        <Map
-          city={getCityForMap(relevantOffers)}
-          offers={relevantOffers}
-          activeOffer={activeOffer}
-          className={'cities'}
-        />
+    <div className='cities'>
+      <div className='cities__places-container container'>
+        <section className='cities__places places'>
+          <h2 className='visually-hidden'>Places</h2>
+          <b className='places__found'>
+            {relevantOffers.length} places to stay in Amsterdam
+          </b>
+          <PlacesSorting />
+          <CitiesPlacesList
+            offers={relevantOffers}
+            onMouseEnterHandler={(offer) => setActiveOffer(offer)}
+          />
+        </section>
+        <div className='cities__right-section'>
+          <Map
+            city={getCityForMap(relevantOffers)}
+            offers={relevantOffers}
+            activeOffer={activeOffer}
+            className={'cities'}
+          />
+        </div>
       </div>
     </div>
   );

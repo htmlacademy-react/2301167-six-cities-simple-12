@@ -15,27 +15,29 @@ export default function LocationsList({
   const currentCity = useAppSelector(getCurrentCity);
 
   return (
-    <section className='locations container'>
-      <ul className='locations__list tabs__list'>
-        {locations.map((city) => (
-          <li
-            className='locations__item'
-            key={city}
-            onClick={() => {
-              dispatch(switchCity(`${city}`));
-            }}
-          >
-            <Link
-              className={`locations__item-link tabs__item ${
-                city === currentCity ? 'tabs__item--active' : ''
-              }`}
-              to='#'
+    <div className='tabs'>
+      <section className='locations container'>
+        <ul className='locations__list tabs__list'>
+          {locations.map((city) => (
+            <li
+              className='locations__item'
+              key={city}
+              onClick={() => {
+                dispatch(switchCity(`${city}`));
+              }}
             >
-              <span>{city}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+              <Link
+                className={`locations__item-link tabs__item ${
+                  city === currentCity ? 'tabs__item--active' : ''
+                }`}
+                to='#'
+              >
+                <span>{city}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
   );
 }

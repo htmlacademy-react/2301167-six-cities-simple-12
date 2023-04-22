@@ -37,7 +37,7 @@ export default function App({ locations }: AppProps): JSX.Element {
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Main} element={<Layout />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<MainPage locations={locations} />} />
             <Route path={AppRoute.Room} element={<PropertyPage />} />
             <Route path='*' element={<Page404 />} />

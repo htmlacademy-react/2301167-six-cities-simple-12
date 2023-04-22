@@ -9,12 +9,8 @@ export default function MainPage({ locations }: MainPageProps): JSX.Element {
   return (
     <main className='page__main page__main--index'>
       <h1 className='visually-hidden'>Cities</h1>
-      <div className='tabs'>
-        <LocationsList locations={locations} />
-      </div>
-      <div className='cities'>
-        <OffersListContainer />
-      </div>
+      <LocationsList locations={locations} />
+      <OffersListContainer />
     </main>
   );
 }
