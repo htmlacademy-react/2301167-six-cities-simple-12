@@ -4,7 +4,7 @@ import ProfileSection from '../profile-section/profile-section';
 
 export default function Layout(): JSX.Element {
   return (
-    <>
+    <div className='page page--gray page--main'>
       <header className='header'>
         <div className='container'>
           <div className='header__wrapper'>
@@ -14,6 +14,6 @@ export default function Layout(): JSX.Element {
         </div>
       </header>
       <Outlet />
-    </>
+    </div>
   );
 }

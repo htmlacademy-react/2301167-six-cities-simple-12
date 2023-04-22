@@ -1,5 +1,5 @@
 import { NameSpace } from '../../const';
-import { State } from '../../types/state-types';
+import { State } from '../../types/state-type';
 
 export const getCurrentCity = (state: State): string =>
   state[NameSpace.App].city;

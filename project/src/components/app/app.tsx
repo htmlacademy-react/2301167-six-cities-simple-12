@@ -5,7 +5,7 @@ import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import PropertyPage from '../../pages/property-page/property-page';
-import Page404 from '../../pages/Page-404/Page404';
+import NoteFoundPage from '../../pages/note-found-page/note-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/loading-page/loading-page';
@@ -37,10 +37,10 @@ export default function App({ locations }: AppProps): JSX.Element {
               </PrivateRoute>
             }
           />
-          <Route path={AppRoute.Main} element={<Layout />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<MainPage locations={locations} />} />
             <Route path={AppRoute.Room} element={<PropertyPage />} />
-            <Route path='*' element={<Page404 />} />
+            <Route path='*' element={<NoteFoundPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

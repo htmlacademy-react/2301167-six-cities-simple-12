@@ -4,8 +4,6 @@ import useMap from '../../hooks/useMap';
 import { Offers, Offer, City } from '../../types/offers-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
-// import { useAppSelector } from '../../hooks';
-// import { getOffers } from '../../store/app-data/app-data.selectors';
 
 type MapProps = {
   city: City;
@@ -31,8 +29,6 @@ export default function Map({
   activeOffer,
   className,
 }: MapProps): JSX.Element {
-  // const { city } = useAppSelector(getOffers)[0];
-
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
   const [markersGroup] = useState<FeatureGroup>(new FeatureGroup());

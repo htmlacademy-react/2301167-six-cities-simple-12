@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import Page404 from '../Page-404/Page404';
+import NoteFoundPage from '../note-found-page/note-found-page';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import { getStarsOfRating } from '../../get-stars-of-rating';
@@ -36,7 +36,7 @@ export default function PropertyPage(): JSX.Element {
   const nearOffers = useAppSelector(getNearOffers);
 
   if (hasErrorOffer) {
-    return <Page404 />;
+    return <NoteFoundPage />;
   }
 
   if (!offer) {
@@ -141,7 +141,12 @@ export default function PropertyPage(): JSX.Element {
                   )}
                 </div>
                 <div className='property__description'>
-                  <p className='property__text'>{description}</p>
+                  <p
+                    className='property__text'
+                    style={{ textAlign: 'left', hyphens: 'auto' }}
+                  >
+                    {description}
+                  </p>
                 </div>
               </div>
               <UsersReviews />
