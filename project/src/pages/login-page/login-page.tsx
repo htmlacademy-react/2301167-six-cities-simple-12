@@ -8,6 +8,7 @@ import Logo from '../../components/logo/logo';
 import { switchCity } from '../../store/app-process/app-process.slice';
 import { LOCATIONS_LIST } from '../../const';
 import { AppRoute } from '../../const';
+import { toast } from 'react-toastify';
 
 export default function LoginPage() {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -29,6 +30,10 @@ export default function LoginPage() {
           login: loginRef.current.value,
           password: passwordRef.current.value,
         });
+      } else {
+        toast.warning(
+          'Password must contain at least one letter and at least one number'
+        );
       }
     }
   };
