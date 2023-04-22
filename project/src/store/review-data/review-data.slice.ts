@@ -6,6 +6,7 @@ import { fetchReviewsAction, sendReviewAction } from '../api-action';
 const initialState: ReviewData = {
   reviews: [],
   hasErrorReview: false,
+  isReviewSend: false,
 };
 
 export const reviewData = createSlice({
@@ -25,12 +26,15 @@ export const reviewData = createSlice({
       })
       .addCase(sendReviewAction.pending, (state) => {
         state.hasErrorReview = false;
+        state.isReviewSend = true;
       })
       .addCase(sendReviewAction.fulfilled, (state, action) => {
         state.reviews = action.payload;
+        state.isReviewSend = false;
       })
       .addCase(sendReviewAction.rejected, (state) => {
         state.hasErrorReview = true;
+        state.isReviewSend = false;
       });
   },
 });

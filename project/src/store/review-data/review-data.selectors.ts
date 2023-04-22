@@ -6,3 +6,5 @@ export const getReviews = (state: State): Reviews =>
   state[NameSpace.Comment].reviews;
 export const getErrorReviewStatus = (state: State): boolean =>
   state[NameSpace.Comment].hasErrorReview;
+export const getReviewSendStatus = (state: State): boolean =>
+  state[NameSpace.Comment].isReviewSend;

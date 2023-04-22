@@ -2,9 +2,9 @@ import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import RatingInput from '../rating-input/rating-input';
 import { useParams } from 'react-router-dom';
 import { sendReviewAction } from '../../store/api-action';
-import { NewReview } from '../../types/review-type';
 import { MAX_CHARACTER_COMMENT, MIN_CHARACTER_COMMENT } from '../../const';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getReviewSendStatus } from '../../store/review-data/review-data.selectors';
 
 export default function FormRewiew(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -21,6 +21,20 @@ export default function FormRewiew(): JSX.Element {
 
   const { id } = useParams();
   const hotelId = Number(id);
+
+  const reviewSendStatus = useAppSelector(getReviewSendStatus);
+
+  useEffect(() => {
+    if (reviewSendStatus === true) {
+      setSubmitDisabled(false);
+      setIsInactive(true);
+      clearForm();
+    }
+    if (reviewSendStatus === false) {
+      setSubmitDisabled(true);
+      setIsInactive(false);
+    }
+  }, [reviewSendStatus]);
 
   useEffect(() => setFormData({ ...formData, hotelId: hotelId }), [hotelId]);
 
@@ -43,14 +57,7 @@ export default function FormRewiew(): JSX.Element {
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    submit(formData);
-  };
-
-  const submit = (reviewData: NewReview) => {
-    setIsInactive(true);
-    dispatch(sendReviewAction(reviewData));
-    setIsInactive(false);
-    clearForm();
+    dispatch(sendReviewAction(formData));
   };
 
   const clearForm = () => {

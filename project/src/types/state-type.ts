@@ -27,4 +27,5 @@ export type AppData = {
 export type ReviewData = {
   reviews: Reviews;
   hasErrorReview: boolean;
+  isReviewSend: boolean;
 };
