@@ -6,12 +6,18 @@ import {
   getAuthorizationStatus,
   getUserData,
 } from '../../store/user-process/user-process.selectors';
+import React from 'react';
 
 export default function ProfileSection(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const authStatus = useAppSelector(getAuthorizationStatus);
   const userName = useAppSelector(getUserData);
+
+  const handleLogOutClick = (evt: React.MouseEvent<HTMLElement>) => {
+    evt.preventDefault();
+    dispatch(logoutAction());
+  };
 
   if (authStatus === AuthorizationStatus.Auth) {
     return (
@@ -29,10 +35,7 @@ export default function ProfileSection(): JSX.Element {
             <Link
               className='header__nav-link'
               to=''
-              onClick={(evt) => {
-                evt.preventDefault();
-                dispatch(logoutAction());
-              }}
+              onClick={handleLogOutClick}
             >
               <span className='header__signout'>Log Out</span>
             </Link>
