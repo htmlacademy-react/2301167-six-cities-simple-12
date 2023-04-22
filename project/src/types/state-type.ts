@@ -1,4 +1,5 @@
 import { AuthorizationStatus } from '../const';
+import { store } from '../store';
 import { Offer, Offers } from './offers-type';
 import { Reviews } from './review-type';
 import { UserData } from './user-data-type';
@@ -29,3 +30,7 @@ export type ReviewData = {
   hasErrorReview: boolean;
   isReviewSend: boolean;
 };
+
+export type State = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
