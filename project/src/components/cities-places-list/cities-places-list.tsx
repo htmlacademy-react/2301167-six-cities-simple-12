@@ -6,7 +6,7 @@ import { getOptionSorting } from '../../store/app-process/app-process.selectors'
 
 type CitiesPlacesListProps = {
   offers: Offers;
-  onMouseEnterHandler: (offer: Offer) => void;
+  onMouseEnterHandler: (offer: Offer | null) => void;
 };
 
 export default function CitiesPlacesList({
@@ -23,7 +23,7 @@ export default function CitiesPlacesList({
         <PlaceCard
           offer={offer}
           key={offer.id}
-          onMouseEnterHandler={() => onMouseEnterHandler(offer)}
+          onMouseEnterHandler={onMouseEnterHandler}
         />
       ))}
     </div>
