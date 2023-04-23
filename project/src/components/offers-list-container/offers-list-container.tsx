@@ -20,7 +20,7 @@ const getCityForMap = (offers: Offers, city: string) =>
   offers.find((offer) => offer.city.name === city)?.city;
 
 export default function OffersListContainer(): JSX.Element {
-  const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
+  const [activeOffer, setActiveOffer] = useState<Offer | null>(null);
   const [relevantOffers, setRelevantOffers] = useState<Offers>([]);
 
   const offers = useAppSelector(getOffers);
@@ -39,7 +39,7 @@ export default function OffersListContainer(): JSX.Element {
     setRelevantOffers(currentOffers);
   }, [city, offers]);
 
-  if (!relevantOffers.length) {
+  if (!getOffersOfcity(offers, city).length) {
     return <MainEmpty city={city} />;
   }
 

@@ -8,7 +8,7 @@ import 'leaflet/dist/leaflet.css';
 type MapProps = {
   city: City;
   offers: Offers;
-  activeOffer: Offer | undefined;
+  activeOffer: Offer | null;
   className: string;
 };
 
