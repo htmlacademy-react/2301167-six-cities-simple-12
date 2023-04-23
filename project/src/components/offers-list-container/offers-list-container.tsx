@@ -39,7 +39,7 @@ export default function OffersListContainer(): JSX.Element {
     setRelevantOffers(currentOffers);
   }, [city, offers]);
 
-  if (!relevantOffers.length) {
+  if (!getOffersOfcity(offers, city).length) {
     return <MainEmpty city={city} />;
   }
 
