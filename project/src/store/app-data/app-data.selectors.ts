@@ -2,6 +2,11 @@ import { NameSpace } from '../../const';
 import { Offer, Offers } from '../../types/offers-type';
 import { State } from '../../types/state-type';
 
+export const getCurrentCity = (state: State): string =>
+  state[NameSpace.Data].city;
+export const getOptionSorting = (state: State): string =>
+  state[NameSpace.Data].optionSorting;
+
 export const getOffers = (state: State): Offers => state[NameSpace.Data].offers;
 export const getOffer = (state: State): Offer | null =>
   state[NameSpace.Data].offer;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { switchCity } from '../../store/app-process/app-process.slice';
-import { getCurrentCity } from '../../store/app-process/app-process.selectors';
+import { switchCity } from '../../store/app-data/app-data.slice';
+import { getCurrentCity } from '../../store/app-data/app-data.selectors';
 
 type LocationsListProps = {
   locations: string[];

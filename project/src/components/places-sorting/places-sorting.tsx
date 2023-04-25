@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { OPTIONS_SORTING } from '../../const';
-import { sortingOffers } from '../../store/app-process/app-process.slice';
-import { getOptionSorting } from '../../store/app-process/app-process.selectors';
+import { sortingOffers } from '../../store/app-data/app-data.slice';
+import { getOptionSorting } from '../../store/app-data/app-data.selectors';
 import { useEffect, useState } from 'react';
 
 export default function PlacesSorting(): JSX.Element {
