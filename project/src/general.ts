@@ -18,3 +18,13 @@ export function getSortingBy(offers: Offers, option: string) {
 
   return currentOffers;
 }
+
+export function getFormattedDateForReview(date: string) {
+  const reviewDate = new Date(date);
+  const prepareDate = reviewDate.toLocaleString('en-EN', {
+    month: 'long',
+    year: 'numeric',
+  });
+
+  return prepareDate;
+}

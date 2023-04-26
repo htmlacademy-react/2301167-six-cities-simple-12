@@ -2,7 +2,7 @@ import PlaceCard from '../place-card/place-card';
 import { Offer, Offers } from '../../types/offers-type';
 import { getSortingBy } from '../../general';
 import { useAppSelector } from '../../hooks';
-import { getOptionSorting } from '../../store/app-process/app-process.selectors';
+import { getOptionSorting } from '../../store/app-data/app-data.selectors';
 
 type CitiesPlacesListProps = {
   offers: Offers;

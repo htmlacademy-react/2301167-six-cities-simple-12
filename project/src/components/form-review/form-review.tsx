@@ -91,6 +91,7 @@ export default function FormRewiew(): JSX.Element {
         placeholder='Tell how was your stay, what you like and what can be improved'
         onChange={onElementChangeHandle}
         disabled={isInactive}
+        data-testid='review'
       />
       <div className='reviews__button-wrapper'>
         <p className='reviews__help' style={{ textAlign: 'left' }}>

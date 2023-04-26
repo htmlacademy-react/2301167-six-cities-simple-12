@@ -7,6 +7,9 @@ import { LOCATIONS_LIST } from './const';
 import { checkAuthAction, fetchOffersAction } from './store/api-action';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HistoryRouter from './components/history-route/history-route';
+import browserHistory from './browser-history';
+import ScrollToTop from './components/scroll-to-top/scroll-to-top';
 
 store.dispatch(checkAuthAction());
 store.dispatch(fetchOffersAction());
@@ -18,8 +21,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ToastContainer />
-      <App locations={LOCATIONS_LIST} />
+      <HistoryRouter history={browserHistory}>
+        <ToastContainer />
+        <ScrollToTop />
+        <App locations={LOCATIONS_LIST} />
+      </HistoryRouter>
     </Provider>
   </React.StrictMode>
 );

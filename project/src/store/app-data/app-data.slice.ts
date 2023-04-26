@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { AppData } from '../../types/state-type';
-import { NameSpace } from '../../const';
+import { LOCATIONS_LIST, NameSpace, OPTIONS_SORTING } from '../../const';
 import {
   fetchNearOffersAction,
   fetchOfferAction,
@@ -8,6 +8,8 @@ import {
 } from '../api-action';
 
 const initialState: AppData = {
+  city: LOCATIONS_LIST[0],
+  optionSorting: OPTIONS_SORTING[0],
   offers: [],
   offer: null,
   isOffersLoading: false,
@@ -21,7 +23,14 @@ const initialState: AppData = {
 export const appData = createSlice({
   name: NameSpace.Data,
   initialState,
-  reducers: {},
+  reducers: {
+    switchCity: (state, action: PayloadAction<string>) => {
+      state.city = action.payload;
+    },
+    sortingOffers: (state, action: PayloadAction<string>) => {
+      state.optionSorting = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchOffersAction.pending, (state) => {
@@ -59,3 +68,5 @@ export const appData = createSlice({
       });
   },
 });
+
+export const { switchCity, sortingOffers } = appData.actions;

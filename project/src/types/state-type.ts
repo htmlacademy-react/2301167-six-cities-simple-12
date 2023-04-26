@@ -9,12 +9,9 @@ export type UserProcess = {
   userData: UserData | null;
 };
 
-export type AppProcess = {
+export type AppData = {
   city: string;
   optionSorting: string;
-};
-
-export type AppData = {
   offers: Offers;
   offer: Offer | null;
   isOffersLoading: boolean;

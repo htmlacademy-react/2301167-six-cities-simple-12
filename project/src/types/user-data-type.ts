@@ -6,3 +6,5 @@ export type UserData = {
   name: string;
   token: string;
 };
+
+export default UserData;

@@ -9,7 +9,7 @@ import {
   getOffers,
 } from '../../store/app-data/app-data.selectors';
 import { toast } from 'react-toastify';
-import { getCurrentCity } from '../../store/app-process/app-process.selectors';
+import { getCurrentCity } from '../../store/app-data/app-data.selectors';
 import MainEmpty from '../main-empty/main-empty';
 import LoadingPage from '../../pages/loading-page/loading-page';
 

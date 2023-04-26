@@ -1,5 +1,6 @@
 import { Review } from '../../types/review-type';
 import { getStarsOfRating } from '../../get-stars-of-rating';
+import { getFormattedDateForReview } from '../../general';
 
 type ItemReviewProps = {
   review: Review;
@@ -8,11 +9,7 @@ type ItemReviewProps = {
 export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
   const { user, rating, comment, date } = review;
 
-  const reviewDate = new Date(date);
-  const prepareDate = reviewDate.toLocaleString('en-En', {
-    month: 'long',
-    year: 'numeric',
-  });
+  const prepareDate = getFormattedDateForReview(date);
 
   return (
     <li className='reviews__item'>

@@ -68,5 +68,11 @@ export default function Map({
     };
   }, [map, offers, activeOffer]);
 
-  return <section className={`${className}__map map`} ref={mapRef} />;
+  return (
+    <section
+      className={`${className}__map map`}
+      ref={mapRef}
+      data-testid='map'
+    />
+  );
 }

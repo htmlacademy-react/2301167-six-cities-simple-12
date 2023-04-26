@@ -5,7 +5,7 @@ import { useAppDispatch } from '../../hooks';
 import { AuthData } from '../../types/auth-data-type';
 import { loginAction } from '../../store/api-action';
 import Logo from '../../components/logo/logo';
-import { switchCity } from '../../store/app-process/app-process.slice';
+import { switchCity } from '../../store/app-data/app-data.slice';
 import { LOCATIONS_LIST } from '../../const';
 import { AppRoute } from '../../const';
 import { toast } from 'react-toastify';
