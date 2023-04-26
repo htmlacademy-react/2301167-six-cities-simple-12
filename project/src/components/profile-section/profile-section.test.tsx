@@ -12,7 +12,7 @@ const mockStore = configureMockStore();
 const history = createMemoryHistory();
 
 describe('Component: ProfileSection', () => {
-  it('should render correctly when user not authed', () => {
+  test('should render correctly when user not authed', () => {
     const store = mockStore({
       USER: {
         authorizationStatus: AuthorizationStatus.NoAuth,
@@ -30,7 +30,7 @@ describe('Component: ProfileSection', () => {
     expect(screen.getByText('Login')).toBeInTheDocument();
   });
 
-  it('should render correctly when user authed', () => {
+  test('should render correctly when user authed', () => {
     const fakeUserData = makeFakeUserData();
 
     const store = mockStore({
@@ -52,7 +52,7 @@ describe('Component: ProfileSection', () => {
     expect(screen.getByText(fakeUserData.email)).toBeInTheDocument();
   });
 
-  it('should render correctly when location.pathname is /login', () => {
+  test('should render correctly when location.pathname is /login', () => {
     const store = mockStore({
       USER: {
         authorizationStatus: AuthorizationStatus.NoAuth,

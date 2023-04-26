@@ -4,7 +4,7 @@ import { makeFakeReview } from '../../utils/mocks';
 import { getFormattedDateForReview } from '../../general';
 
 describe('Component: ItemReview', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     const fakeReview = makeFakeReview();
     const reviewViewDate = getFormattedDateForReview(fakeReview.date);
 

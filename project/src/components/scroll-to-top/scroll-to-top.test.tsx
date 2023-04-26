@@ -12,7 +12,7 @@ describe('Component: ScrollToTop', () => {
       <ScrollToTop />
     </Router>
   );
-  it('should render correctly and call scrollTo', () => {
+  test('should render correctly and call scrollTo', () => {
     render(fakeApp);
     expect(global.scrollTo).toBeCalledTimes(1);
   });

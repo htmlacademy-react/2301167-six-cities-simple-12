@@ -6,7 +6,7 @@ import HistoryRouter from '../history-route/history-route';
 const history = createMemoryHistory();
 
 describe('Component: Logo', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     render(
       <HistoryRouter history={history}>
         <Logo />

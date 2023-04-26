@@ -26,7 +26,7 @@ const fakeOffer = makeFakeOffer();
 const fakeReviews = makeFakeReviews();
 
 describe('Component: FormRewiew', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     const store = mockStore({
       DATA: {
         offer: fakeOffer,
@@ -51,7 +51,7 @@ describe('Component: FormRewiew', () => {
     ).toBeInTheDocument();
   });
 
-  it('comment can be sent to server', () => {
+  test('comment can be sent to server', () => {
     mockAPI.onPost(`${APIRoute.Comments}/1`).reply(200, []);
 
     const store = mockStore({

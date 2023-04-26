@@ -7,7 +7,7 @@ import { makeFakeOffers } from '../../utils/mocks';
 const mockStore = configureMockStore();
 
 describe('Component: Map', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     const fakeOffers = makeFakeOffers();
     const store = mockStore({
       DATA: {
