@@ -24,6 +24,7 @@ export default function RatingInput({
             type='radio'
             onFocus={onElementChangeHandle}
             disabled={isInactive}
+            alt='rating-star'
           />
           <label
             htmlFor={`${itemRating}-stars`}
