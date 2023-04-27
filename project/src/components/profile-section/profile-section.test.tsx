@@ -6,7 +6,7 @@ import { Router } from 'react-router-dom';
 import ProfileSection from './profile-section';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { makeFakeUserData } from '../../utils/mocks';
-import HistoryRouter from '../history-route/history-route';
+import HistoryRouter from '../history-route/history-router';
 
 const mockStore = configureMockStore();
 const history = createMemoryHistory();
