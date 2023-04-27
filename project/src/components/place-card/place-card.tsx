@@ -17,6 +17,7 @@ export default function PlaceCard({
   return (
     <article
       className='cities__card place-card'
+      style={{ textAlign: 'left' }}
       onMouseEnter={() => onMouseEnterHandler(offer)}
       onMouseLeave={() => onMouseEnterHandler(null)}
     >
@@ -50,7 +51,9 @@ export default function PlaceCard({
           </div>
         </div>
         <h2 className='place-card__name'>
-          <Link to={`/offer/${offer.id}`}>{title}</Link>
+          <Link style={{ textDecoration: 'none' }} to={`/offer/${offer.id}`}>
+            {title}
+          </Link>
         </h2>
         <p className='place-card__type'>{type}</p>
       </div>

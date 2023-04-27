@@ -30,6 +30,7 @@ export default function LocationsList({
                 className={`locations__item-link tabs__item ${
                   city === currentCity ? 'tabs__item--active' : ''
                 }`}
+                style={{ textDecoration: 'none' }}
                 to='#'
               >
                 <span>{city}</span>

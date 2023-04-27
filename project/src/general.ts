@@ -1,4 +1,4 @@
-import { OPTIONS_SORTING } from './const';
+import { ArrPathName, ClassName, ClassNameKey, OPTIONS_SORTING } from './const';
 import { Offers } from './types/offers-type';
 
 export function getSortingBy(offers: Offers, option: string) {
@@ -27,4 +27,20 @@ export function getFormattedDateForReview(date: string) {
   });
 
   return prepareDate;
+}
+
+export function getItemPluralFormatted(item: string, quantity: number) {
+  const newItem = quantity > 1 ? `${item}s` : item;
+  return `${quantity} ${newItem}`;
+}
+
+export function getClassNameForLayout(pathname: string) {
+  let result = '';
+
+  ArrPathName.forEach((elem: ClassNameKey) => {
+    if (pathname.indexOf(elem) !== -1) {
+      return (result = ClassName[elem]);
+    }
+  });
+  return result || ClassName.main;
 }

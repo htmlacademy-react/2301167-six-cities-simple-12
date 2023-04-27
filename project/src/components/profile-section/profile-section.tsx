@@ -34,6 +34,7 @@ export default function ProfileSection(): JSX.Element {
           <li className='header__nav-item'>
             <Link
               className='header__nav-link'
+              style={{ textDecoration: 'none' }}
               to=''
               onClick={handleLogOutClick}
             >

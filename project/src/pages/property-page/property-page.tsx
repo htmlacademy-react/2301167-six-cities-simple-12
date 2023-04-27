@@ -18,6 +18,7 @@ import {
   getNearOffers,
   getOffer,
 } from '../../store/app-data/app-data.selectors';
+import { getItemPluralFormatted } from '../../general';
 
 export default function PropertyPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -103,10 +104,10 @@ export default function PropertyPage(): JSX.Element {
                   {type}
                 </li>
                 <li className='property__feature property__feature--bedrooms'>
-                  {bedrooms} Bedrooms
+                  {`${getItemPluralFormatted('Bedroom', bedrooms)}`}
                 </li>
                 <li className='property__feature property__feature--adults'>
-                  Max {maxAdults} adults
+                  Max {`${getItemPluralFormatted('adult', maxAdults)}`}
                 </li>
               </ul>
               <div className='property__price'>

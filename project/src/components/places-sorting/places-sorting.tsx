@@ -40,6 +40,7 @@ export default function PlacesSorting(): JSX.Element {
             className={`places__option ${
               option === currentOption ? 'places__option--active' : ''
             }`}
+            style={{ textAlign: 'left' }}
             key={option}
             onClick={() => {
               dispatch(sortingOffers(option));
