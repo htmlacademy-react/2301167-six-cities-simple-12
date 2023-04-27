@@ -11,7 +11,6 @@ import {
 import { toast } from 'react-toastify';
 import { getCurrentCity } from '../../store/app-data/app-data.selectors';
 import MainEmpty from '../main-empty/main-empty';
-import LoadingPage from '../../pages/loading-page/loading-page';
 
 const getOffersOfcity = (offers: Offers, city: string) =>
   offers.filter((offer) => offer.city.name === city);
@@ -41,10 +40,6 @@ export default function OffersListContainer(): JSX.Element {
 
   if (!getOffersOfcity(offers, city).length) {
     return <MainEmpty city={city} />;
-  }
-
-  if (!relevantOffers) {
-    return <LoadingPage />;
   }
 
   return (
