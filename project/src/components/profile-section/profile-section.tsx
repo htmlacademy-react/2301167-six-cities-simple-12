@@ -51,6 +51,7 @@ export default function ProfileSection(): JSX.Element {
           <li className='header__nav-item user'>
             <Link
               className='header__nav-link header__nav-link--profile'
+              style={{ textDecoration: 'none' }}
               to='/login'
             >
               <div className='header__avatar-wrapper user__avatar-wrapper'></div>
