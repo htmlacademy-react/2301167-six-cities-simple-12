@@ -9,7 +9,7 @@ export default function Layout(): JSX.Element {
   return (
     <div className={`${getClassNameForLayout(pathname)}`}>
       <header className='header'>
-        <div className='container'>
+        <div className='container' data-testid='layout-container'>
           <div className='header__wrapper'>
             <Logo />
             <ProfileSection />
