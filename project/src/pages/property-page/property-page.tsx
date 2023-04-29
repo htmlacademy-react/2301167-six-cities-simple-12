@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import NoteFoundPage from '../note-found-page/note-found-page';
+import NotFoundPage from '../not-found-page/not-found-page';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import { getStarsOfRating } from '../../get-stars-of-rating';
@@ -37,7 +37,7 @@ export default function PropertyPage(): JSX.Element {
   const nearOffers = useAppSelector(getNearOffers);
 
   if (hasErrorOffer) {
-    return <NoteFoundPage />;
+    return <NotFoundPage />;
   }
 
   if (!offer) {

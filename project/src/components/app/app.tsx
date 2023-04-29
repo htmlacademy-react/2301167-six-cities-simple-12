@@ -5,7 +5,7 @@ import Layout from '../layout/layout';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import PropertyPage from '../../pages/property-page/property-page';
-import NoteFoundPage from '../../pages/note-found-page/note-found-page';
+import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/loading-page/loading-page';
@@ -37,7 +37,7 @@ export default function App({ locations }: AppProps): JSX.Element {
           />
           <Route index element={<MainPage locations={locations} />} />
           <Route path={AppRoute.Room} element={<PropertyPage />} />
-          <Route path='*' element={<NoteFoundPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Route>
       </Routes>
     </HelmetProvider>
