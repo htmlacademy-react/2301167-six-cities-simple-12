@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Logo from './logo';
 import { createMemoryHistory } from 'history';
-import HistoryRouter from '../history-route/history-router';
+import HistoryRouter from '../history-router/history-router';
 
 const history = createMemoryHistory();
 

@@ -12,7 +12,7 @@ import {
 } from '../../const';
 import { createMemoryHistory } from 'history';
 import { Provider } from 'react-redux';
-import HistoryRouter from '../history-route/history-router';
+import HistoryRouter from '../history-router/history-router';
 import App from './app';
 import { render, screen } from '@testing-library/react';
 
