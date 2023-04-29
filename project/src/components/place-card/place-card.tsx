@@ -16,6 +16,7 @@ export default function PlaceCard({
 
   return (
     <article
+      role='listitem'
       className='cities__card place-card'
       style={{ textAlign: 'left' }}
       onMouseEnter={() => onMouseEnterHandler(offer)}
