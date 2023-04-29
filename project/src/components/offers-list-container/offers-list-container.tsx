@@ -10,7 +10,7 @@ import {
 } from '../../store/app-data/app-data.selectors';
 import { toast } from 'react-toastify';
 import { getCurrentCity } from '../../store/app-data/app-data.selectors';
-import MainEmpty from '../main-empty/main-empty';
+import MainEmptyPage from '../../pages/main-empty-page/main-empty-page';
 
 const getOffersOfcity = (offers: Offers, city: string) =>
   offers.filter((offer) => offer.city.name === city);
@@ -39,7 +39,7 @@ export default function OffersListContainer(): JSX.Element {
   }, [city, offers]);
 
   if (!getOffersOfcity(offers, city).length) {
-    return <MainEmpty city={city} />;
+    return <MainEmptyPage city={city} />;
   }
 
   return (
