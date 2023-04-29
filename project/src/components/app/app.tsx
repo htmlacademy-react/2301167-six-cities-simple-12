@@ -6,10 +6,8 @@ import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import PropertyPage from '../../pages/property-page/property-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import PrivateRoute from '../private-route/private-route';
 import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/loading-page/loading-page';
-import { getAuthorizationStatus } from '../../store/user-process/user-process.selectors';
 import { getOffersDataLoadingStatus } from '../../store/app-data/app-data.selectors';
 
 type AppProps = {
@@ -17,7 +15,6 @@ type AppProps = {
 };
 
 export default function App({ locations }: AppProps): JSX.Element {
-  const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isOffersLoading = useAppSelector(getOffersDataLoadingStatus);
 
   if (isOffersLoading) {
@@ -27,14 +24,7 @@ export default function App({ locations }: AppProps): JSX.Element {
     <HelmetProvider>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route
-            path={AppRoute.Login}
-            element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <LoginPage />
-              </PrivateRoute>
-            }
-          />
+          <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route index element={<MainPage locations={locations} />} />
           <Route path={AppRoute.Room} element={<PropertyPage />} />
           <Route path='*' element={<NotFoundPage />} />

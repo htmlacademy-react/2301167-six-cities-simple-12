@@ -1,13 +1,14 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import React, { FormEvent, useRef } from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AuthData } from '../../types/auth-data-type';
 import { loginAction } from '../../store/api-action';
 import { switchCity } from '../../store/app-data/app-data.slice';
-import { LOCATIONS_LIST } from '../../const';
+import { AuthorizationStatus, LOCATIONS_LIST } from '../../const';
 import { AppRoute } from '../../const';
 import { toast } from 'react-toastify';
+import { getAuthorizationStatus } from '../../store/user-process/user-process.selectors';
 
 export default function LoginPage() {
   const loginRef = useRef<HTMLInputElement | null>(null);
@@ -15,6 +16,8 @@ export default function LoginPage() {
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
   const onSubmit = (authData: AuthData) => {
     dispatch(loginAction(authData));
@@ -51,7 +54,9 @@ export default function LoginPage() {
     navigate(AppRoute.Main);
   };
 
-  return (
+  return authorizationStatus === AuthorizationStatus.Auth ? (
+    <Navigate to={AppRoute.Main} />
+  ) : (
     <>
       <Helmet>
         <title>6/Cities.Login</title>
