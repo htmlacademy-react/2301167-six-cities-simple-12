@@ -104,10 +104,11 @@ export default function PropertyPage(): JSX.Element {
                   {type}
                 </li>
                 <li className='property__feature property__feature--bedrooms'>
-                  {`${getItemPluralFormatted('Bedroom', bedrooms)}`}
+                  {bedrooms} {`${getItemPluralFormatted('Bedroom', bedrooms)}`}
                 </li>
                 <li className='property__feature property__feature--adults'>
-                  Max {`${getItemPluralFormatted('adult', maxAdults)}`}
+                  Max {maxAdults}{' '}
+                  {`${getItemPluralFormatted('adult', maxAdults)}`}
                 </li>
               </ul>
               <div className='property__price'>

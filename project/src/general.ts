@@ -30,8 +30,7 @@ export function getFormattedDateForReview(date: string) {
 }
 
 export function getItemPluralFormatted(item: string, quantity: number) {
-  const newItem = quantity > 1 ? `${item}s` : item;
-  return `${quantity} ${newItem}`;
+  return !quantity || quantity > 1 ? `${item}s` : item;
 }
 
 export function getClassNameForLayout(pathname: string) {
