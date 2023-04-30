@@ -1,7 +1,7 @@
 import { configureMockStore } from '@jedmao/redux-mock-store';
 import { createMemoryHistory } from 'history';
 import { LOCATIONS_LIST, OPTIONS_SORTING } from '../../const';
-import { makeFakeNearOffers, makeFakeOffers } from '../../utils/mocks';
+import { makeFakeNearOffers } from '../../utils/mocks';
 import { render, screen } from '@testing-library/react';
 import NearPlacesList from './near-places-list';
 import { Provider } from 'react-redux';
