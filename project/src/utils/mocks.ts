@@ -42,6 +42,9 @@ export const makeFakeOffer = (): Offer => ({
 export const makeFakeOffers = (): Offers =>
   datatype.array(20).map(() => makeFakeOffer());
 
+export const makeFakeNearOffers = (): Offers =>
+  datatype.array(3).map(() => makeFakeOffer());
+
 export const makeFakeReview = (): Review => ({
   comment: datatype.string(),
   date: datatype.string(),

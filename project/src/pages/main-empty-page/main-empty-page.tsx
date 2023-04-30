@@ -1,8 +1,10 @@
-type MainEmptyProps = {
+type MainEmptyPageProps = {
   city: string;
 };
 
-export default function MainEmpty({ city }: MainEmptyProps): JSX.Element {
+export default function MainEmptyPage({
+  city,
+}: MainEmptyPageProps): JSX.Element {
   return (
     <div className='cities'>
       <div className='cities__places-container cities__places-container--empty container'>

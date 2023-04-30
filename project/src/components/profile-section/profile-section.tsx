@@ -12,7 +12,7 @@ export default function ProfileSection(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const authStatus = useAppSelector(getAuthorizationStatus);
-  const userName = useAppSelector(getUserData);
+  const userData = useAppSelector(getUserData);
 
   const handleLogOutClick = (evt: React.MouseEvent<HTMLElement>) => {
     evt.preventDefault();
@@ -25,15 +25,22 @@ export default function ProfileSection(): JSX.Element {
         <ul className='header__nav-list'>
           <li className='header__nav-item user'>
             <div className='header__nav-profile'>
-              <div className='header__avatar-wrapper user__avatar-wrapper'></div>
+              <div className='header__avatar-wrapper user__avatar-wrapper'>
+                <img
+                  className='reviews__avatar user__avatar'
+                  src={userData?.avatarUrl}
+                  alt='user-avatar'
+                />
+              </div>
               <span className='header__user-name user__name'>
-                {userName?.email}
+                {userData?.email}
               </span>
             </div>
           </li>
           <li className='header__nav-item'>
             <Link
               className='header__nav-link'
+              style={{ textDecoration: 'none' }}
               to=''
               onClick={handleLogOutClick}
             >
@@ -50,6 +57,7 @@ export default function ProfileSection(): JSX.Element {
           <li className='header__nav-item user'>
             <Link
               className='header__nav-link header__nav-link--profile'
+              style={{ textDecoration: 'none' }}
               to='/login'
             >
               <div className='header__avatar-wrapper user__avatar-wrapper'></div>

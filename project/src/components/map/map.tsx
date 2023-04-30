@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { FeatureGroup, Icon, Marker } from 'leaflet';
-import useMap from '../../hooks/useMap';
+import useMap from '../../hooks/use-map';
 import { Offers, Offer, City } from '../../types/offers-type';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
 import 'leaflet/dist/leaflet.css';
@@ -14,13 +14,13 @@ type MapProps = {
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [30, 40],
-  iconAnchor: [20, 40],
+  iconSize: [28, 40],
+  iconAnchor: [14, 40],
 });
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [30, 40],
-  iconAnchor: [20, 40],
+  iconSize: [28, 40],
+  iconAnchor: [14, 40],
 });
 
 export default function Map({
@@ -66,11 +66,12 @@ export default function Map({
     return () => {
       markersGroup.clearLayers();
     };
-  }, [map, offers, activeOffer]);
+  }, [map, offers, activeOffer, city, markersGroup]);
 
   return (
     <section
       className={`${className}__map map`}
+      style={{ maxWidth: '1146px' }}
       ref={mapRef}
       data-testid='map'
     />

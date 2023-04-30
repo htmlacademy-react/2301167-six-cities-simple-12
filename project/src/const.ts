@@ -55,3 +55,13 @@ export enum NameSpace {
   User = 'USER',
   Comment = 'COMMENT',
 }
+
+export const ClassName = {
+  main: 'page page--gray page--main',
+  offer: 'page',
+  login: 'page page--gray page--login',
+};
+
+export type ClassNameKey = keyof typeof ClassName;
+
+export const ArrPathName: ClassNameKey[] = ['offer', 'login'];

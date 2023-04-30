@@ -4,7 +4,7 @@ import { createAPI } from '../../services/api';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import FormRewiew from './form-review';
-import HistoryRouter from '../history-route/history-route';
+import HistoryRouter from '../history-router/history-router';
 import { createMemoryHistory } from 'history';
 import { makeFakeOffer, makeFakeReviews } from '../../utils/mocks';
 import { APIRoute } from '../../const';

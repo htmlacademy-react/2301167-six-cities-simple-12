@@ -7,7 +7,7 @@ import { LOCATIONS_LIST } from './const';
 import { checkAuthAction, fetchOffersAction } from './store/api-action';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import HistoryRouter from './components/history-route/history-route';
+import HistoryRouter from './components/history-router/history-router';
 import browserHistory from './browser-history';
 import ScrollToTop from './components/scroll-to-top/scroll-to-top';
 

@@ -18,7 +18,10 @@ export default function CitiesPlacesList({
   const sortingOffers = getSortingBy(offers, currentOption) as Offers;
 
   return (
-    <div className='cities__places-list places__list tabs__content'>
+    <div
+      className='cities__places-list places__list tabs__content'
+      data-testid='cities-places-list'
+    >
       {sortingOffers.map((offer) => (
         <PlaceCard
           offer={offer}

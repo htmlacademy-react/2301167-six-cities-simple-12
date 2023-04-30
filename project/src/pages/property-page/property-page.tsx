@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
-import NoteFoundPage from '../note-found-page/note-found-page';
+import NotFoundPage from '../not-found-page/not-found-page';
 import Map from '../../components/map/map';
 import NearPlacesList from '../../components/near-places-list/near-places-list';
 import { getStarsOfRating } from '../../get-stars-of-rating';
@@ -18,6 +18,7 @@ import {
   getNearOffers,
   getOffer,
 } from '../../store/app-data/app-data.selectors';
+import { getItemPluralFormatted } from '../../general';
 
 export default function PropertyPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ export default function PropertyPage(): JSX.Element {
   const nearOffers = useAppSelector(getNearOffers);
 
   if (hasErrorOffer) {
-    return <NoteFoundPage />;
+    return <NotFoundPage />;
   }
 
   if (!offer) {
@@ -103,10 +104,11 @@ export default function PropertyPage(): JSX.Element {
                   {type}
                 </li>
                 <li className='property__feature property__feature--bedrooms'>
-                  {bedrooms} Bedrooms
+                  {bedrooms} {`${getItemPluralFormatted('Bedroom', bedrooms)}`}
                 </li>
                 <li className='property__feature property__feature--adults'>
-                  Max {maxAdults} adults
+                  Max {maxAdults}{' '}
+                  {`${getItemPluralFormatted('adult', maxAdults)}`}
                 </li>
               </ul>
               <div className='property__price'>
@@ -152,7 +154,10 @@ export default function PropertyPage(): JSX.Element {
               <UsersReviews />
             </div>
           </div>
-          <section className='property__map map'>
+          <section
+            className='property__map map'
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
             <Map
               city={city}
               offers={[...nearOffers, offer]}

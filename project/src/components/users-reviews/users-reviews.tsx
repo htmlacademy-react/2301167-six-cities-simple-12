@@ -10,6 +10,7 @@ import {
 import { toast } from 'react-toastify';
 import { useEffect } from 'react';
 import { Reviews } from '../../types/review-type';
+import { getItemPluralFormatted } from '../../general';
 
 const getNewReviews = (reviews: Reviews) => [...reviews].reverse().slice(0, 10);
 
@@ -28,9 +29,9 @@ export default function UsersReviews(): JSX.Element {
   }, [isErrorLoading]);
 
   return (
-    <section className='property__reviews reviews'>
+    <section className='property__reviews reviews' data-testid='reviews'>
       <h2 className='reviews__title'>
-        Reviews &middot;{' '}
+        {getItemPluralFormatted('Review', reviews.length)} &middot;{' '}
         <span className='reviews__amount'>{reviews.length}</span>
       </h2>
 

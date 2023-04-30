@@ -23,7 +23,10 @@ export default function NearPlacesList({
   }, [isErrorLoading]);
 
   return (
-    <div className='near-places__list places__list'>
+    <div
+      className='near-places__list places__list'
+      data-testid='near-places-list'
+    >
       {offers.map((offer) => (
         <PlaceCard
           offer={offer}

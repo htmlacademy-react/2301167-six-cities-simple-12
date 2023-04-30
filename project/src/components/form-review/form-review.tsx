@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react';
 import RatingInput from '../rating-input/rating-input';
 import { useParams } from 'react-router-dom';
 import { sendReviewAction } from '../../store/api-action';
@@ -8,6 +8,8 @@ import { getReviewSendStatus } from '../../store/review-data/review-data.selecto
 
 export default function FormRewiew(): JSX.Element {
   const dispatch = useAppDispatch();
+
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const [isSubmitDisabled, setSubmitDisabled] = useState(true);
   const [isInactive, setIsInactive] = useState(false);
@@ -64,20 +66,22 @@ export default function FormRewiew(): JSX.Element {
     const ratingInput = document.getElementById(`${formData.rating}-stars`);
     (ratingInput as HTMLInputElement).checked = false;
 
-    const textArea = document.getElementById('review') as HTMLTextAreaElement;
-    textArea.value = '';
-
+    if (formRef.current) {
+      formRef.current.reset();
+    }
     setFormData({ ...formData, comment: '', rating: 0 });
     setSubmitDisabled(false);
   };
 
   return (
-    <form className='reviews__form form' action='' onSubmit={handleSubmit}>
-      <label
-        className='reviews__label form__label'
-        style={{ display: 'flex' }}
-        htmlFor='review'
-      >
+    <form
+      className='reviews__form form'
+      style={{ textAlign: 'left' }}
+      action=''
+      onSubmit={handleSubmit}
+      ref={formRef}
+    >
+      <label className='reviews__label form__label' htmlFor='review'>
         Your review
       </label>
       <RatingInput
@@ -94,7 +98,7 @@ export default function FormRewiew(): JSX.Element {
         data-testid='review'
       />
       <div className='reviews__button-wrapper'>
-        <p className='reviews__help' style={{ textAlign: 'left' }}>
+        <p className='reviews__help'>
           To submit review please make sure to set
           <span className='reviews__star'>rating</span> and describe your stay
           using between{' '}
