@@ -28,7 +28,7 @@ export default function UsersReviews(): JSX.Element {
   }, [isErrorLoading]);
 
   return (
-    <section className='property__reviews reviews'>
+    <section className='property__reviews reviews' data-testid='reviews'>
       <h2 className='reviews__title'>
         Reviews &middot;{' '}
         <span className='reviews__amount'>{reviews.length}</span>
