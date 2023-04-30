@@ -62,7 +62,7 @@ const fakeApp = (
 );
 
 describe('Application Routing', () => {
-  it('should render "MainPage" when user navigate to "/"', () => {
+  test('should render "MainPage" when user navigate to "/"', () => {
     history.push(AppRoute.Main);
     render(fakeApp);
 
@@ -71,7 +71,7 @@ describe('Application Routing', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render "PropertyPage" when user navigate to "/offer/:id"', () => {
+  test('should render "PropertyPage" when user navigate to "/offer/:id"', () => {
     history.push(AppRoute.Room);
     render(fakeApp);
 
@@ -79,14 +79,14 @@ describe('Application Routing', () => {
     expect(screen.getByText(/Meet the host/i)).toBeInTheDocument();
   });
 
-  it('should render "NotFoundPage" when user navigate to non-existent route"', () => {
+  test('should render "NotFoundPage" when user navigate to non-existent route"', () => {
     history.push('/non-existent-route');
     render(fakeApp);
 
     expect(screen.getByText(/Page not found/i)).toBeInTheDocument();
   });
 
-  it('should render "LoginPage" when user navigate to "/login"', () => {
+  test('should render "LoginPage" when user navigate to "/login"', () => {
     history.push(AppRoute.Login);
     render(fakeApp);
 

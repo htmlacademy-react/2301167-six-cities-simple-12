@@ -20,20 +20,20 @@ const fakePlaceCard = (
 );
 
 describe('Component: PlaceCard', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     render(fakePlaceCard);
 
     expect(screen.getByText(fakeOffer.title)).toBeInTheDocument();
   });
 
-  it('should redirect to card after click', () => {
+  test('should redirect to card after click', () => {
     render(fakePlaceCard);
 
     fireEvent.click(screen.getAllByRole('link')[0]);
     expect(history.location.pathname).toBe(`/offer/${fakeOffer.id}`);
   });
 
-  it('should set active offer after mouse enter', () => {
+  test('should set active offer after mouse enter', () => {
     render(fakePlaceCard);
 
     fireEvent.mouseOver(screen.getByRole('listitem'));

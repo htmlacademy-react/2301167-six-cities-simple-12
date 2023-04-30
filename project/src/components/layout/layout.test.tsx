@@ -10,7 +10,7 @@ const mockStore = configureMockStore();
 const history = createMemoryHistory();
 
 describe('Component: Layout', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     const store = mockStore({
       USER: {
         authorizationStatus: AuthorizationStatus.Unknown,

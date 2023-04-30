@@ -29,7 +29,7 @@ const store = mockStore({
 const history = createMemoryHistory();
 
 describe('Component: PlacesSorting', () => {
-  it('should render correctly', () => {
+  test('should render correctly', () => {
     render(
       <Provider store={store}>
         <HistoryRouter history={history}>

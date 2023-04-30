@@ -16,7 +16,7 @@ const getFakeCurrentOffers = (city: string, offers: Offers) =>
   offers.filter((offer) => offer.city.name === city);
 
 describe('Component: OffersContainer', () => {
-  it('should render correctly when has offers', () => {
+  test('should render correctly when has offers', () => {
     const fakeCurrentOffers = getFakeCurrentOffers(
       LOCATIONS_LIST[0],
       fakeOffers
@@ -48,7 +48,7 @@ describe('Component: OffersContainer', () => {
     const listItems = screen.getAllByRole('listitem', { name: 'place-card' });
     expect(listItems.length).toBe(fakeCurrentOffers.length);
   });
-  it('should render correctly when offers by City empty', () => {
+  test('should render correctly when offers by City empty', () => {
     const store = mockStore({
       DATA: {
         city: LOCATIONS_LIST[0],
