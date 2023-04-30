@@ -154,7 +154,10 @@ export default function PropertyPage(): JSX.Element {
               <UsersReviews />
             </div>
           </div>
-          <section className='property__map map'>
+          <section
+            className='property__map map'
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
             <Map
               city={city}
               offers={[...nearOffers, offer]}

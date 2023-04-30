@@ -12,7 +12,7 @@ export default function ItemReview({ review }: ItemReviewProps): JSX.Element {
   const prepareDate = getFormattedDateForReview(date);
 
   return (
-    <li className='reviews__item'>
+    <li className='reviews__item' style={{ overflowX: 'hidden' }}>
       <div className='reviews__user user'>
         <div className='reviews__avatar-wrapper user__avatar-wrapper'>
           <img

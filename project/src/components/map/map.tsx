@@ -66,11 +66,12 @@ export default function Map({
     return () => {
       markersGroup.clearLayers();
     };
-  }, [map, offers, activeOffer]);
+  }, [map, offers, activeOffer, city, markersGroup]);
 
   return (
     <section
       className={`${className}__map map`}
+      style={{ maxWidth: '1146px' }}
       ref={mapRef}
       data-testid='map'
     />
