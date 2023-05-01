@@ -63,9 +63,6 @@ export default function FormRewiew(): JSX.Element {
   };
 
   const clearForm = () => {
-    const ratingInput = document.getElementById(`${formData.rating}-stars`);
-    (ratingInput as HTMLInputElement).checked = false;
-
     if (formRef.current) {
       formRef.current.reset();
     }
